@@ -33,7 +33,7 @@ export default function ServicesPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className='max-w-7xl mx-auto text-center'
+          className='max-w-6xl mx-auto text-center'
         >
           <h1 className='text-5xl sm:text-6xl font-bold text-foreground mb-6'>
             Our <span className='text-primary'>Services</span>
@@ -47,7 +47,7 @@ export default function ServicesPage() {
 
       {/* Services Grid */}
       <section className='py-20 px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-6xl mx-auto'>
           <motion.div
             variants={containerVariants}
             initial='hidden'
@@ -92,7 +92,7 @@ export default function ServicesPage() {
 
       {/* Process Section */}
       <section className='py-20 px-4 sm:px-6 lg:px-8 bg-secondary'>
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-6xl mx-auto'>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -138,7 +138,7 @@ export default function ServicesPage() {
 
       {/* Why Choose Us */}
       <section className='py-20 px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-6xl mx-auto'>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

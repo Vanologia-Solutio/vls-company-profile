@@ -32,7 +32,7 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center'
+          className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center'
         >
           <h1 className='text-5xl sm:text-6xl font-bold text-foreground mb-6'>
             About <span className='text-primary'>Vanologia Solutio</span>
@@ -46,7 +46,7 @@ export default function AboutPage() {
 
       {/* Story Section */}
       <section className='py-20'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ export default function AboutPage() {
 
       {/* Values Section */}
       <section className='py-20 bg-secondary'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ export default function AboutPage() {
 
       {/* Team Section */}
       <section className='py-20'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -206,7 +206,7 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center'
+          className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center'
         >
           <h2 className='text-4xl sm:text-5xl font-bold text-primary-foreground mb-6'>
             Let&apos;s Work Together

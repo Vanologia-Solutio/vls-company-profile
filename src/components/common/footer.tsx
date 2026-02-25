@@ -42,7 +42,7 @@ export default function Footer() {
 
   return (
     <footer className='bg-card/50 border-t border-border relative'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12'>
+      <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12'>
         {/* Main Footer Content */}
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 space-y-12'>
           {/* Brand */}

@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <header className='fixed top-0 w-full z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 border-b border-border'>
-      <nav className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between'>
+      <nav className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between'>
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -76,11 +76,12 @@ export default function Header() {
           animate={{ opacity: 1, y: 0 }}
           className='md:hidden bg-card border-b border-border'
         >
-          <div className='max-w-7xl mx-auto px-4 py-4 flex flex-col gap-4'>
+          <div className='max-w-6xl mx-auto px-4 py-4 flex flex-col gap-4'>
             {navItems.map(({ label, href }) => (
               <Link
                 key={label}
                 href={href}
+                onClick={() => setIsOpen(false)}
                 className='text-foreground/80 hover:text-foreground transition-colors text-sm font-medium'
               >
                 {label}
@@ -88,6 +89,7 @@ export default function Header() {
             ))}
             <Link
               href='/contact'
+              onClick={() => setIsOpen(false)}
               className='w-full px-6 py-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors text-sm font-medium mt-2 text-center'
             >
               Get Started

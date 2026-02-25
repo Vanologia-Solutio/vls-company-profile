@@ -33,7 +33,7 @@ export default function Hero() {
         className='absolute bottom-20 left-10 size-72 bg-accent/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50'
       />
 
-      <div className='max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
+      <div className='max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -55,15 +55,16 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h1 className='text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-balance mb-6'>
-            Transform Your Digital{' '}
+          <div className='text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-balance mb-6'>
+            <h1>Transform Your Digital</h1>
             <TypeAnimation
-              sequence={['Vision', 1000, 'Presence', 1000, 'Future', 1000]}
+              sequence={['Vision', 2000, 'Presence', 2000, 'Future', 2000]}
               repeat={Infinity}
-              className='text-transparent bg-clip-text bg-linear-to-r from-primary via-accent to-primary'
+              className="text-transparent bg-clip-text bg-linear-to-r from-primary via-accent to-primary after:content-['|'] after:ml-1 after:animate-blink after:text-primary/80"
+              wrapper='span'
               speed={50}
             />
-          </h1>
+          </div>
         </motion.div>
 
         {/* Subheading */}
