@@ -39,7 +39,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className='flex justify-center mb-8'
+          className='flex justify-start sm:justify-center mb-8'
         >
           <div className='flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30'>
             <Sparkles size={16} className='text-primary' />
@@ -55,7 +55,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <div className='text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-balance mb-6'>
+          <div className='text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-balance mb-6 text-left sm:text-center'>
             <h1>Transform Your Digital</h1>
             <TypeAnimation
               sequence={['Vision', 2000, 'Presence', 2000, 'Future', 2000]}
@@ -72,7 +72,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className='text-lg sm:text-xl text-foreground/70 mb-8 max-w-2xl md:max-w-3xl'
+          className='text-base sm:text-lg text-foreground/70 mb-8 max-w-2xl md:max-w-3xl mx-auto md:text-center'
         >
           End-to-end website development, stunning graphic design, and strategic
           marketing solutions. We build digital experiences that drive real
@@ -84,7 +84,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className='flex flex-col sm:flex-row gap-4 items-start sm:items-center'
+          className='flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-start sm:justify-center'
         >
           <Link
             href='/contact'
