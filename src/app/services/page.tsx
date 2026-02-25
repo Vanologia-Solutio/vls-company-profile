@@ -113,7 +113,7 @@ export default function ServicesPage() {
             initial='hidden'
             whileInView='visible'
             viewport={{ once: true }}
-            className='grid md:grid-cols-4 gap-8'
+            className='grid md:grid-cols-4 gap-6'
           >
             {processSteps.map((step, index) => (
               <motion.div
@@ -121,7 +121,7 @@ export default function ServicesPage() {
                 variants={itemVariants}
                 className='relative'
               >
-                <div className='bg-background rounded-xl p-8 border border-border h-full'>
+                <div className='bg-background rounded-xl p-6 border border-border h-full'>
                   <div className='text-4xl font-bold text-primary mb-4'>
                     {step.number}
                   </div>

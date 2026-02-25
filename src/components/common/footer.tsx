@@ -42,9 +42,9 @@ export default function Footer() {
 
   return (
     <footer className='bg-card/50 border-t border-border relative'>
-      <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12'>
         {/* Main Footer Content */}
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 space-y-12'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 space-y-12'>
           {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -78,7 +78,7 @@ export default function Footer() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: (categoryIndex + 1) * 0.1 }}
               >
-                <h3 className='font-semibold text-foreground mb-4'>
+                <h3 className='font-semibold text-foreground md:mb-4'>
                   {category}
                 </h3>
                 <ul className='space-y-2'>
@@ -104,7 +104,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className='grid md:grid-cols-3 gap-8 pb-12 border-b border-border/30'
+          className='grid md:grid-cols-3 gap-8 py-12 border-b border-border/30'
         >
           <div className='flex items-start gap-3'>
             <Mail size={20} className='text-primary mt-1 shrink-0' />

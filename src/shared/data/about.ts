@@ -78,7 +78,8 @@ export const team: Team[] = [
   {
     name: 'Ryu Alvano',
     role: 'Founder & Lead Developer',
-    image: 'RA',
+    image:
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/member-profiles/ryu.webp',
     bio: 'Full Stack Developer specializing in software engineering and integration services',
     socialLinks: {
       instagram: 'https://www.instagram.com/ryu_alv',
@@ -89,7 +90,8 @@ export const team: Team[] = [
   {
     name: 'Kimmy Marvin Sasmita',
     role: 'Graphic Designer',
-    image: 'KM',
+    image:
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/member-profiles/kimmy.webp',
     bio: 'Graphic Designer specializing in branding and visual identity',
     socialLinks: {
       instagram: 'https://www.instagram.com/kimmy.marv',
@@ -100,7 +102,8 @@ export const team: Team[] = [
   {
     name: 'Eugene Salim Wijaya',
     role: 'Frontend Developer Specialist',
-    image: 'ESW',
+    image:
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/member-profiles/eugene.webp',
     bio: 'Frontend Developer specializing in web design and user experience',
     socialLinks: {
       instagram: 'https://www.instagram.com/udanjin',

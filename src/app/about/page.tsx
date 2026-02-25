@@ -2,6 +2,7 @@
 
 import { stats, team, values } from '@/shared/data/about'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function AboutPage() {
   const containerVariants = {
@@ -124,7 +125,7 @@ export default function AboutPage() {
             initial='hidden'
             whileInView='visible'
             viewport={{ once: true }}
-            className='grid md:grid-cols-2 lg:grid-cols-4 gap-8'
+            className='grid md:grid-cols-2 lg:grid-cols-4 gap-6'
           >
             {values.map((value, index) => {
               const IconComponent = value.icon
@@ -132,10 +133,10 @@ export default function AboutPage() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className='bg-background rounded-xl p-8 border border-border text-center hover:shadow-lg transition-shadow'
+                  className='bg-background rounded-xl p-6 border border-border text-center hover:shadow-lg transition-shadow'
                 >
-                  <div className='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4'>
-                    <IconComponent className='w-6 h-6 text-primary' />
+                  <div className='size-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4'>
+                    <IconComponent className='size-6 text-primary' />
                   </div>
                   <h3 className='text-xl font-bold text-foreground mb-3'>
                     {value.title}
@@ -179,10 +180,13 @@ export default function AboutPage() {
                 variants={itemVariants}
                 className='bg-card rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow'
               >
-                <div className='w-full h-48 bg-linear-to-br from-primary/20 to-accent/20 flex items-center justify-center'>
-                  <span className='text-4xl font-bold text-primary/40'>
-                    {member.image}
-                  </span>
+                <div className='relative aspect-square overflow-hidden w-full'>
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    sizes='width: 100%, height: 100%'
+                  />
                 </div>
                 <div className='p-6'>
                   <h3 className='text-xl font-bold text-foreground mb-1'>
