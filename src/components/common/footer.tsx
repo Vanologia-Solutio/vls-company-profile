@@ -44,7 +44,7 @@ export default function Footer() {
     <footer className='bg-card/50 border-t border-border relative'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12'>
         {/* Main Footer Content */}
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 space-y-12'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 space-y-8 md:space-y-12'>
           {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -78,7 +78,7 @@ export default function Footer() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: (categoryIndex + 1) * 0.1 }}
               >
-                <h3 className='font-semibold text-foreground md:mb-4'>
+                <h3 className='font-semibold text-foreground mb-4'>
                   {category}
                 </h3>
                 <ul className='space-y-2'>
