@@ -80,7 +80,7 @@ export const team: Team[] = [
     role: 'Founder & Lead Developer',
     image:
       'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/member-profiles/ryu.webp',
-    bio: 'Full Stack Developer specializing in software engineering and integration services',
+    bio: 'Specializing in software engineering and integration services',
     socialLinks: {
       instagram: 'https://www.instagram.com/ryu_alv',
       linkedin: 'https://www.linkedin.com/in/ryualvano',
@@ -89,10 +89,10 @@ export const team: Team[] = [
   },
   {
     name: 'Kimmy Marvin Sasmita',
-    role: 'Graphic Designer',
+    role: 'Graphic Design Specialist',
     image:
       'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/member-profiles/kimmy.webp',
-    bio: 'Graphic Designer specializing in branding and visual identity',
+    bio: 'Specializing in branding and visual identity',
     socialLinks: {
       instagram: 'https://www.instagram.com/kimmy.marv',
       linkedin: 'https://www.linkedin.com/in/kimmymarvinsasmita',
@@ -104,7 +104,7 @@ export const team: Team[] = [
     role: 'Frontend Developer Specialist',
     image:
       'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/member-profiles/eugene.webp',
-    bio: 'Frontend Developer specializing in web design and user experience',
+    bio: 'Specializing in web design and user experience',
     socialLinks: {
       instagram: 'https://www.instagram.com/udanjin',
       linkedin: 'https://www.linkedin.com/in/eugenesalimw',
