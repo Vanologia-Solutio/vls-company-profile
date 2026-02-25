@@ -119,7 +119,7 @@ export default function Footer() {
             </div>
           </div>
           <div className='flex items-start gap-3'>
-            <Phone size={20} className='text-accent mt-1 shrink-0' />
+            <Phone size={20} className='text-primary mt-1 shrink-0' />
             <div>
               <p className='text-foreground/60 text-sm'>Phone / WhatsApp</p>
               <a
