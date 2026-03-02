@@ -3,6 +3,7 @@
 import { stats, team, values } from '@/shared/data/about'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function AboutPage() {
   const containerVariants = {
@@ -218,12 +219,13 @@ export default function AboutPage() {
           <p className='text-lg text-primary-foreground/90 mb-8'>
             Ready to transform your business? Get in touch with our team today.
           </p>
-          <motion.a
-            href='/contact'
+          <motion.button
             className='px-8 py-3 bg-primary-foreground text-primary rounded-full font-semibold hover:shadow-lg transition-shadow'
           >
-            Get in Touch
-          </motion.a>
+            <Link href='/contact'>
+              Get in Touch
+            </Link>
+          </motion.button>
         </motion.div>
       </section>
     </div>

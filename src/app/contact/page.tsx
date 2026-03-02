@@ -73,7 +73,7 @@ export default function ContactPage() {
                       href={`mailto:${info.value}`}
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-lg font-semibold text-primary mb-2 hover:text-primary/80 hover:underline transition-colors'
+                      className='text-lg font-semibold text-primary hover:text-primary/80 hover:underline transition-colors'
                     >
                       {info.value}
                     </a>
@@ -83,13 +83,13 @@ export default function ContactPage() {
                       href={`https://wa.me/${info.value.replace('+62 ', '62').replaceAll('-', '')}`}
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-lg font-semibold text-primary mb-2 hover:text-primary/80 hover:underline transition-colors'
+                      className='text-lg font-semibold text-primary hover:text-primary/80 hover:underline transition-colors'
                     >
                       {info.value}
                     </a>
                   )}
                   {info.title === 'Location' && (
-                    <p className='text-lg font-semibold text-primary mb-2'>
+                    <p className='text-lg font-semibold text-primary'>
                       {info.value}
                     </p>
                   )}
