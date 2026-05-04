@@ -23,6 +23,10 @@ export default function Footer() {
         title: 'Marketing Strategy',
         href: '/services',
       },
+      {
+        title: 'Data & Analytics',
+        href: '/services',
+      },
     ],
     Company: [
       {
@@ -38,20 +42,26 @@ export default function Footer() {
         href: '/work',
       },
     ],
+    Social: [
+      {
+        title: 'Instagram',
+        href: 'https://www.instagram.com/vanologiasolutio',
+      },
+    ],
   }
 
   return (
     <footer className='bg-card/50 border-t border-border relative'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12'>
+      <div className='max-w-6xl mx-auto px-4 pt-12'>
         {/* Main Footer Content */}
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 space-y-8 md:space-y-12'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 space-y-8 md:space-y-12'>
           {/* Brand */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className='flex flex-col gap-2'
+            className='flex flex-col gap-2.5'
           >
             <Link href='/' className='shrink-0'>
               <Image
@@ -62,7 +72,7 @@ export default function Footer() {
                 className='h-6 w-auto sm:h-8'
               />
             </Link>
-            <p className='text-foreground/60 text-sm leading-relaxed'>
+            <p className='text-muted-foreground text-sm leading-relaxed'>
               Transforming ideas into digital reality through innovative design
               and strategic development.
             </p>
@@ -73,22 +83,29 @@ export default function Footer() {
             ([category, links], categoryIndex) => (
               <motion.div
                 key={category}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: (categoryIndex + 1) * 0.1 }}
               >
-                <h3 className='font-semibold text-foreground mb-4'>
-                  {category}
-                </h3>
-                <ul className='space-y-2'>
+                <span className='sub mb-2.5'>{category}</span>
+                <ul className='space-y-1.5'>
                   {links.map(link => (
                     <li key={link.title}>
                       <Link
                         href={link.href}
-                        className='text-foreground/60 hover:text-primary transition-colors text-sm'
+                        target={
+                          link.href.startsWith('http') ? '_blank' : '_self'
+                        }
+                        rel={
+                          link.href.startsWith('http')
+                            ? 'noopener noreferrer'
+                            : undefined
+                        }
+                        className='group relative text-muted-foreground hover:text-accent transition-colors text-sm'
                       >
                         {link.title}
+                        <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-250' />
                       </Link>
                     </li>
                   ))}
@@ -100,43 +117,47 @@ export default function Footer() {
 
         {/* Contact Info */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className='grid md:grid-cols-3 gap-8 py-12 border-b border-border/30'
         >
           <div className='flex items-start gap-3'>
-            <Mail size={20} className='text-primary mt-1 shrink-0' />
+            <Mail size={20} className='text-accent mt-1 shrink-0' />
             <div>
-              <p className='text-foreground/60 text-sm'>Email</p>
-              <a
+              <p className='text-muted-foreground text-sm'>Email</p>
+              <Link
                 href='mailto:vanologiasolutio@outlook.com'
-                className='text-foreground hover:text-primary transition-colors'
+                className='group relative font-semibold text-foreground hover:text-accent transition-colors'
               >
                 vanologiasolutio@outlook.com
-              </a>
+                <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-250' />
+              </Link>
             </div>
           </div>
           <div className='flex items-start gap-3'>
-            <Phone size={20} className='text-primary mt-1 shrink-0' />
+            <Phone size={20} className='text-accent mt-1 shrink-0' />
             <div>
-              <p className='text-foreground/60 text-sm'>Phone / WhatsApp</p>
-              <a
+              <p className='text-muted-foreground text-sm'>Phone / WhatsApp</p>
+              <Link
                 href='https://wa.me/6289523077397'
                 target='_blank'
-                className='text-foreground hover:text-primary transition-colors'
+                className='group relative font-semibold text-foreground hover:text-accent transition-colors'
                 rel='noopener noreferrer'
               >
                 +62 895-2307-7397
-              </a>
+                <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-250' />
+              </Link>
             </div>
           </div>
           <div className='flex items-start gap-3'>
-            <MapPin size={20} className='text-primary mt-1 shrink-0' />
+            <MapPin size={20} className='text-accent mt-1 shrink-0' />
             <div>
-              <p className='text-foreground/60 text-sm'>Location</p>
-              <p className='text-foreground'>Tangerang, Banten, Indonesia</p>
+              <p className='text-muted-foreground text-sm'>Location</p>
+              <p className='font-semibold text-foreground'>
+                Tangerang, Banten, Indonesia
+              </p>
             </div>
           </div>
         </motion.div>
@@ -149,7 +170,7 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className='flex flex-col md:flex-row justify-center items-center py-8'
         >
-          <p className='text-foreground/50 text-sm text-center'>
+          <p className='text-muted-foreground text-sm text-center'>
             &copy; {currentYear} Vanologia Solutio. All rights reserved.
           </p>
         </motion.div>

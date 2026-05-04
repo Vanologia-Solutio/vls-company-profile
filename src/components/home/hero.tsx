@@ -1,126 +1,153 @@
 'use client'
 
-import { stats } from '@/shared/data/about'
-import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { motion, Variants } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import { TypeAnimation } from 'react-type-animation'
+import {
+  CraftButton,
+  CraftButtonIcon,
+  CraftButtonLabel,
+} from '../ui/craft-button'
+import { TagBadge } from '../ui/tag-badge'
 
-export default function Hero() {
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+}
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: 'easeOut' },
+  },
+}
+
+export function Hero() {
   return (
-    <section className='min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden'>
-      {/* Grid background effect */}
-      <div className='absolute inset-0 opacity-10'>
-        <div
-          className='absolute inset-0'
-          style={{
-            backgroundImage:
-              'linear-gradient(0deg, transparent 24%, rgba(124, 58, 237, 0.05) 25%, rgba(124, 58, 237, 0.05) 26%, transparent 27%, transparent 74%, rgba(124, 58, 237, 0.05) 75%, rgba(124, 58, 237, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(124, 58, 237, 0.05) 25%, rgba(124, 58, 237, 0.05) 26%, transparent 27%, transparent 74%, rgba(124, 58, 237, 0.05) 75%, rgba(124, 58, 237, 0.05) 76%, transparent 77%, transparent)',
-            backgroundSize: '50px 50px',
-          }}
-        />
-      </div>
-
-      {/* Animated gradient orbs */}
+    <section className='min-h-screen flex items-center justify-center px-4 relative overflow-hidden'>
       <motion.div
-        animate={{ x: [0, 100, 0], y: [0, 50, 0] }}
-        transition={{ duration: 8, repeat: Infinity }}
-        className='absolute top-20 right-10 size-72 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50'
-      />
-      <motion.div
-        animate={{ x: [0, -100, 0], y: [0, -50, 0] }}
-        transition={{ duration: 10, repeat: Infinity, delay: 2 }}
-        className='absolute bottom-20 left-10 size-72 bg-accent/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50'
+        initial={{ scale: 1.15 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.5, ease: 'easeOut' }}
+        className='absolute inset-0 bg-cover bg-center bg-no-repeat'
+        style={{
+          backgroundImage: `url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"%3E%3Cdefs%3E%3ClinearGradient id="grad1" x1="0%25" y1="0%25" x2="100%25" y2="100%25"%3E%3Cstop offset="0%25" style="stop-color:rgba(202,36,36,0.15);stop-opacity:1" /%3E%3Cstop offset="100%25" style="stop-color:rgba(30,30,30,0);stop-opacity:1" /%3E%3C/linearGradient%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" /%3E%3CfeDisplacementMap in="SourceGraphic" in2="noise" scale="30" /%3E%3C/filter%3E%3C/defs%3E%3Crect width="1200" height="800" fill="url(%23grad1)" /%3E%3Ccircle cx="200" cy="100" r="250" fill="rgba(202,36,36,0.1)" filter="url(%23noise)" /%3E%3Ccircle cx="1000" cy="700" r="300" fill="rgba(202,36,36,0.08)" filter="url(%23noise)" /%3E%3Cpath d="M0 400 Q300 300 600 400 T1200 400" stroke="rgba(202,36,36,0.05)" stroke-width="2" fill="none" /%3E%3C/svg%3E')`,
+        }}
       />
 
-      <div className='max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
-        {/* Badge */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.25 }}
+        transition={{ duration: 1 }}
+        className='absolute inset-0 bg-linear-to-b from-accent/20 to-transparent'
+      />
+
+      <motion.div
+        animate={{
+          y: [0, 25, 0],
+          x: [0, 50, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className='absolute top-20 right-20 size-72 bg-accent/8 rounded-full blur-3xl'
+      />
+
+      <motion.div
+        animate={{
+          y: [0, -25, 0],
+          x: [0, -15, 0],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className='absolute bottom-20 left-20 size-72 bg-accent/10 rounded-full blur-3xl'
+      />
+
+      <motion.div
+        variants={containerVariants}
+        initial='hidden'
+        animate='visible'
+        className='relative z-10 max-w-6xl mx-auto text-center space-y-6'
+      >
+        <TagBadge label='Digital Innovation Starts Here' icon='Sparkles' />
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className='flex justify-start sm:justify-center mb-8'
+          variants={itemVariants}
+          className='font-bold text-foreground leading-normal'
         >
-          <div className='flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30'>
-            <Sparkles size={16} className='text-primary' />
-            <span className='text-sm text-foreground/80'>
-              Digital Innovation Starts Here
-            </span>
-          </div>
+          <h1 className='hero'>Transform Your Digital</h1>
+          <TypeAnimation
+            sequence={['Vision', 2000, 'Presence', 2000, 'Future', 2000]}
+            repeat={Infinity}
+            className="hero font-courgette text-transparent bg-clip-text bg-linear-to-br from-accent to-accent/60 after:content-['|'] after:ml-1 after:animate-blink after:text-accent/80"
+            wrapper='span'
+            speed={50}
+          />
         </motion.div>
 
-        {/* Main heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <div className='text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-balance mb-6 text-left sm:text-center'>
-            <h1>Transform Your Digital</h1>
-            <TypeAnimation
-              sequence={['Vision', 2000, 'Presence', 2000, 'Future', 2000]}
-              repeat={Infinity}
-              className="text-transparent bg-clip-text bg-linear-to-r from-primary via-accent to-primary after:content-['|'] after:ml-1 after:animate-blink after:text-primary/80"
-              wrapper='span'
-              speed={50}
-            />
-          </div>
-        </motion.div>
-
-        {/* Subheading */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className='text-base sm:text-lg text-foreground/70 mb-8 max-w-2xl md:max-w-3xl mx-auto md:text-center'
+          variants={itemVariants}
+          className='text-base sm:text-lg max-w-2xl md:max-w-3xl'
         >
-          End-to-end website development, stunning graphic design, and strategic
-          marketing solutions. We build digital experiences that drive real
-          business results.
+          Vanologia Solutio delivers cutting-edge digital solutions that empower
+          your business to thrive in the modern landscape.
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          variants={itemVariants}
           className='flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-start sm:justify-center'
         >
-          <Link
-            href='/contact'
-            className='px-8 py-3 bg-linear-to-r from-primary to-accent text-primary-foreground rounded-full hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 font-medium flex items-center gap-2 group'
+          <CraftButton size='xl' className='w-full sm:w-auto' asChild>
+            <Link href='/contact'>
+              <CraftButtonLabel>Start Your Project</CraftButtonLabel>
+              <CraftButtonIcon>
+                <ArrowUpRight className='transition-transform duration-500 group-hover:rotate-45 dark:text-foreground' />
+              </CraftButtonIcon>
+            </Link>
+          </CraftButton>
+          <CraftButton
+            size='xl'
+            className='w-full sm:w-auto bg-background text-foreground border border-accent/30'
+            asChild
           >
-            Start Your Project
-            <ArrowRight
-              size={20}
-              className='group-hover:translate-x-1 transition-transform'
-            />
-          </Link>
-          <Link
-            href='/work'
-            className='px-8 py-3 border border-primary/30 text-foreground rounded-full hover:bg-primary/5 transition-colors font-medium'
-          >
-            Explore Our Works
-          </Link>
+            <Link href='/work'>
+              <CraftButtonLabel>Explore Our Works</CraftButtonLabel>
+            </Link>
+          </CraftButton>
         </motion.div>
+      </motion.div>
 
-        {/* Stats */}
+      <motion.div
+        variants={itemVariants}
+        initial='hidden'
+        animate='visible'
+        className='absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 z-20'
+      >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className='mt-16 grid grid-cols-3 gap-8'
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className='w-6 h-10 border-2 border-muted-foreground rounded-full flex items-start justify-center p-2'
         >
-          {stats.heroStats.map((stat, i) => (
-            <div key={i} className='text-center'>
-              <div className='text-3xl sm:text-4xl font-bold text-primary mb-2'>
-                {stat.value}
-              </div>
-              <div className='text-foreground/60 text-sm'>{stat.label}</div>
-            </div>
-          ))}
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className='w-1 h-2 bg-muted-foreground rounded-full'
+          />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }

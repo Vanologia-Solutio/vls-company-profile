@@ -1,25 +1,41 @@
 'use client'
 
 import logo from '@/assets/images/logo.webp'
-import { motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion'
+import { Menu, Moon, Sun, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useTheme } from '../theme-provider'
 
 export default function Header() {
+  const { isDark, toggleTheme, mounted } = useTheme()
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [isScrolled, setIsScrolled] = useState<boolean>(false)
+  const { scrollY } = useScroll()
+
+  useMotionValueEvent(scrollY, 'change', latest => {
+    setIsScrolled(latest > 48)
+  })
 
   const navItems: { label: string; href: string }[] = [
     { label: 'Services', href: '/services' },
-    { label: 'Work', href: '/work' },
+    { label: 'Works', href: '/works' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
   ]
 
   return (
-    <header className='fixed top-0 w-full z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 border-b border-border'>
-      <nav className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between'>
+    <header
+      className={cn(
+        'fixed top-0 w-full z-50 transition-all duration-250',
+        isScrolled
+          ? 'bg-background border-b border-border/60 py-5'
+          : 'bg-transparent py-7',
+      )}
+    >
+      <nav className='max-w-6xl mx-auto px-4 flex items-center justify-between'>
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -32,6 +48,7 @@ export default function Header() {
               alt='Logo'
               width={100}
               height={100}
+              loading='eager'
               className='h-6 w-auto sm:h-8'
             />
           </Link>
@@ -39,28 +56,33 @@ export default function Header() {
 
         <div className='hidden md:flex items-center gap-8'>
           {navItems.map(({ label, href }, i) => (
-            <motion.a
-              key={label}
-              href={href}
-              initial={{ opacity: 0, y: -10 }}
+            <motion.span
+              key={href}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className='text-foreground/80 hover:text-primary transition-colors text-sm font-medium'
+              transition={{ delay: 0.2 + i * 0.1 }}
+              className='font-medium text-foreground hover:text-accent transition-colors relative group'
             >
-              {label}
-            </motion.a>
+              <Link href={href}>
+                {label}
+                <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-250' />
+              </Link>
+            </motion.span>
           ))}
         </div>
 
-        <motion.a
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          href='/contact'
-          className='hidden md:inline-block px-6 py-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors text-sm font-medium'
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          onClick={toggleTheme}
+          className='p-1.5 rounded-full bg-transparent hover:bg-accent/10 transition-colors duration-200'
+          aria-label='Toggle theme'
         >
-          Get Started
-        </motion.a>
+          {mounted && isDark ? (
+            <Sun className='size-5' />
+          ) : (
+            <Moon className='size-5' />
+          )}
+        </motion.button>
 
         <button
           onClick={() => setIsOpen(!isOpen)}

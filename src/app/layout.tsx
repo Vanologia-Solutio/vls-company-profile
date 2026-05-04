@@ -1,24 +1,32 @@
 import Footer from '@/components/common/footer'
 import Header from '@/components/common/header'
+import { ThemeProvider } from '@/components/theme-provider'
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Bebas_Neue, Courgette, Heebo } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const courgette = Courgette({
+  weight: ['400'],
+  variable: '--font-courgette',
   subsets: ['latin'],
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const bebasneue = Bebas_Neue({
+  weight: ['400'],
+  variable: '--font-bebasneue',
+  subsets: ['latin'],
+})
+
+const heebo = Heebo({
+  variable: '--font-heebo',
   subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
   title: 'Vanologia Solutio - Digital Innovation Agency',
   description:
-    'End-to-end website development, graphic design, and marketing services for your digital transformation',
+    'Transform your business with cutting-edge digital solutions. We deliver innovative technology for modern enterprises.',
 }
 
 export default function RootLayout({
@@ -29,22 +37,24 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${courgette.variable} ${bebasneue.variable} ${heebo.variable} antialiased bg-background text-foreground`}
       >
-        <NextTopLoader
-          color='#CA2424'
-          initialPosition={0.08}
-          crawlSpeed={200}
-          height={3}
-          crawl={true}
-          showSpinner={false}
-          easing='ease'
-          speed={200}
-          zIndex={99999}
-        />
-        <Header />
-        {children}
-        <Footer />
+        <ThemeProvider>
+          <NextTopLoader
+            color='#CA2424'
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={false}
+            easing='ease'
+            speed={200}
+            zIndex={99999}
+          />
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

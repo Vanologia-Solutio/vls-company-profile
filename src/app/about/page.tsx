@@ -18,7 +18,7 @@ export default function AboutPage() {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
@@ -31,10 +31,10 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className='pt-32 pb-20 bg-linear-to-br from-background to-secondary'>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center'
+          className='max-w-6xl mx-auto text-center'
         >
           <h1 className='text-5xl sm:text-6xl font-bold text-foreground mb-6'>
             About <span className='text-primary'>Vanologia Solutio</span>
@@ -48,9 +48,9 @@ export default function AboutPage() {
 
       {/* Story Section */}
       <section className='py-20'>
-        <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-6xl mx-auto'>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -105,9 +105,9 @@ export default function AboutPage() {
 
       {/* Values Section */}
       <section className='py-20 bg-secondary'>
-        <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-6xl mx-auto'>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -152,9 +152,9 @@ export default function AboutPage() {
 
       {/* Team Section */}
       <section className='py-20'>
-        <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-6xl mx-auto'>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -207,11 +207,11 @@ export default function AboutPage() {
       {/* CTA Section */}
       <section className='py-20 bg-primary'>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center'
+          className='max-w-6xl mx-auto text-center'
         >
           <h2 className='text-4xl sm:text-5xl font-bold text-primary-foreground mb-6'>
             Let&apos;s Work Together
@@ -219,12 +219,8 @@ export default function AboutPage() {
           <p className='text-lg text-primary-foreground/90 mb-8'>
             Ready to transform your business? Get in touch with our team today.
           </p>
-          <motion.button
-            className='px-8 py-3 bg-primary-foreground text-primary rounded-full font-semibold hover:shadow-lg transition-shadow'
-          >
-            <Link href='/contact'>
-              Get in Touch
-            </Link>
+          <motion.button className='px-8 py-3 bg-primary-foreground text-primary rounded-full font-semibold hover:shadow-lg transition-shadow'>
+            <Link href='/contact'>Get in Touch</Link>
           </motion.button>
         </motion.div>
       </section>

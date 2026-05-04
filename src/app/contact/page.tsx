@@ -16,7 +16,7 @@ export default function ContactPage() {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
@@ -29,10 +29,10 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className='pt-32 pb-20 bg-linear-to-br from-background to-secondary'>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center'
+          className='max-w-4xl mx-auto text-center'
         >
           <h1 className='text-5xl sm:text-6xl font-bold text-foreground mb-6'>
             Get in <span className='text-primary'>Touch</span>
@@ -45,7 +45,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className='py-20 px-4 sm:px-6 lg:px-8'>
+      <section className='py-20'>
         <div className='max-w-6xl mx-auto'>
           <motion.div
             variants={containerVariants}
@@ -105,9 +105,9 @@ export default function ContactPage() {
 
       {/* FAQ Section */}
       <section className='py-20 bg-linear-to-br from-background to-secondary'>
-        <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-6xl mx-auto'>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
