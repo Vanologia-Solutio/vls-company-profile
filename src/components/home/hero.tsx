@@ -123,7 +123,7 @@ export function Hero() {
             className='w-full sm:w-auto bg-background text-foreground border border-accent/30'
             asChild
           >
-            <Link href='/work'>
+            <Link href='/works'>
               <CraftButtonLabel>Explore Our Works</CraftButtonLabel>
             </Link>
           </CraftButton>

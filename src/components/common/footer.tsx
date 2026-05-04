@@ -39,7 +39,7 @@ export default function Footer() {
       },
       {
         title: 'Portfolio',
-        href: '/work',
+        href: '/works',
       },
     ],
     Social: [

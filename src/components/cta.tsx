@@ -87,7 +87,7 @@ export function CTA() {
             className='w-full sm:w-auto bg-background text-foreground border border-accent/30'
             asChild
           >
-            <Link href='/work'>
+            <Link href='/works'>
               <CraftButtonLabel>View Portfolio</CraftButtonLabel>
               <CraftButtonIcon>
                 <ArrowUpRight className='transition-transform duration-500 group-hover:rotate-45 dark:text-foreground' />
