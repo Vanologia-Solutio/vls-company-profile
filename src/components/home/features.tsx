@@ -63,7 +63,7 @@ export function Features() {
                 'p-6 rounded-xl border transition-all duration-250',
                 feature.highlight
                   ? 'border-accent/50 bg-accent/5 shadow-lg shadow-primary/10'
-                  : 'border-border/50 bg-card/50',
+                  : 'border-border bg-card/50',
               )}
             >
               <div className='flex gap-4'>
