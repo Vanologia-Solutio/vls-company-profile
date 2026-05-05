@@ -74,7 +74,7 @@ export default function Header() {
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={toggleTheme}
-          className='p-1.5 rounded-full bg-transparent hover:bg-accent/10 transition-colors duration-200'
+          className='p-1.5 rounded-lg bg-muted hover:bg-muted/80 transition-colors'
           aria-label='Toggle theme'
         >
           {mounted && isDark ? (

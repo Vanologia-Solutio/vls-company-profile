@@ -1,3 +1,4 @@
+import FloatingWhatsAppButton from '@/components/common/floating-whatsapp-button'
 import Footer from '@/components/common/footer'
 import Header from '@/components/common/header'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -24,7 +25,7 @@ const heebo = Heebo({
 })
 
 export const metadata: Metadata = {
-  title: 'Vanologia Solutio - Digital Innovation Agency',
+  title: 'Vanologia Solutio | Your Digital Transformation Partner',
   description:
     'Transform your business with cutting-edge digital solutions. We deliver innovative technology for modern enterprises.',
 }
@@ -54,6 +55,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <FloatingWhatsAppButton />
         </ThemeProvider>
       </body>
     </html>

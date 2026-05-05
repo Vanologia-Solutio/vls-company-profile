@@ -75,10 +75,7 @@ const cardVariants: Variants = {
 
 export function Services() {
   return (
-    <ParallaxSection
-      id='services'
-      className='relative py-16 sm:py-24 overflow-hidden'
-    >
+    <ParallaxSection id='services' className='py-16 sm:py-24 overflow-hidden'>
       <div className='relative z-10 max-w-6xl mx-auto px-4'>
         {/* Header */}
         <motion.div

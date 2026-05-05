@@ -1,5 +1,3 @@
-'use client'
-
 import { cn } from '@/lib/utils'
 import { features } from '@/shared/data/features'
 import { motion, Variants } from 'framer-motion'

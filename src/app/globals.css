@@ -119,7 +119,7 @@
 
   @keyframes heartbeat {
     0% {
-      box-shadow: 0 0 0 0 var(--heartbeat-color, var(--destructive));
+      box-shadow: 0 0 0 0 var(--heartbeat-color, var(--accent));
       transform: scale(1);
     }
 

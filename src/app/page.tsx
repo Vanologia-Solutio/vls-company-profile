@@ -1,3 +1,5 @@
+'use client'
+
 import { CTA } from '@/components/cta'
 import { Features } from '@/components/home/features'
 import { Hero } from '@/components/home/hero'

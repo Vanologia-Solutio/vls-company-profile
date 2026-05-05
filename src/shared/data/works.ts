@@ -23,7 +23,7 @@ export const PROJECTS: Project[] = [
     description:
       'MediLink is a system that allows the business to manage their medical equipment and supplies with a modern design, responsive layout, admin panel, and inventory tracking system.',
     image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroutepeptides.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/medilink.webp',
     tags: [
       'SaaS',
       'Inventory Management',
@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
     description:
       'CM Gestun is a business that sells medical equipment and supplies. Company profile web page for the business.',
     image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroutepeptides.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/cmgestun.webp',
     tags: ['Company Profile', 'Branding', 'SEO Optimization'],
     link: 'https://cmgestun.com/',
   },
@@ -51,7 +51,7 @@ export const PROJECTS: Project[] = [
     description:
       'Pure Route Peptides is a business that sells peptides in the USA. Custom built website with a modern design, responsive layout, admin panel, and mailing system.',
     image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroutepeptides.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroutepeps.webp',
     tags: [
       'E-commerce',
       'Mailing System',
@@ -113,19 +113,8 @@ export const PROJECTS: Project[] = [
     description:
       'Central Medica Lampung is a business that sells medical equipment and supplies. ERP system for the business.',
     image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/centralmedica.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/centralmedicalampung.webp',
     tags: ['Inventory Management', 'Reporting System', 'Admin Panel'],
-  },
-  {
-    id: 'vanologiasolutioprofile',
-    title: 'Vanologia Solutio Profile',
-    category: 'Company Profile Web Page',
-    description:
-      'Company profile web page for Vanologia Solutio. A simple and clean web page with a modern design.',
-    image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/vanologiasolutioprofile.webp',
-    tags: ['Company Profile', 'Branding', 'SEO Optimization'],
-    link: 'https://www.vanologiasolutio.my.id',
   },
   {
     id: 'vanologiasolutiolibrary',
@@ -134,7 +123,7 @@ export const PROJECTS: Project[] = [
     description:
       'Knowledge base system for Vanologia Solutio. A system that allows the business to manage their documents, videos, and other resources.',
     image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/vanologiasolutiolibrary.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/vlslibrary.webp',
     tags: [
       'Library System',
       'Documentation',

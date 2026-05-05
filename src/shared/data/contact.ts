@@ -8,7 +8,9 @@ interface ContactInfo {
   description: string
 }
 
-export const contactInfo: ContactInfo[] = [
+export const LINK_WHATSAPP = 'https://wa.me/6289523077397'
+
+export const CONTACT_INFO: ContactInfo[] = [
   {
     icon: Mail,
     title: 'Email',

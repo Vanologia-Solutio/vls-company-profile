@@ -1,5 +1,3 @@
-'use client'
-
 import backgroundImage from '@/assets/images/bg/cta.webp'
 import {
   CraftButton,

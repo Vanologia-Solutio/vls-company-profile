@@ -214,8 +214,8 @@ export function Works() {
                   className={cn(
                     'group rounded-lg overflow-hidden bg-card border backdrop-blur-sm transition-all duration-300',
                     index === currentWorkIndex
-                      ? 'border-2 border-accent shadow-2xl shadow-accent/20'
-                      : 'border-border grayscale',
+                      ? 'shadow-2xl shadow-accent/20'
+                      : 'grayscale-80',
                   )}
                 >
                   <div className='overflow-hidden w-full aspect-3/2'>
