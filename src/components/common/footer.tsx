@@ -156,7 +156,9 @@ export default function Footer() {
             <MapPin size={20} className='text-accent mt-1 shrink-0' />
             <div>
               <p className='text-muted-foreground text-sm'>Location</p>
-              <p className='font-semibold text-foreground'>{LOCATION}</p>
+              <p className='text-base font-semibold text-foreground'>
+                {LOCATION}
+              </p>
             </div>
           </div>
         </motion.div>
