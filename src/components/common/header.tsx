@@ -74,7 +74,12 @@ export default function Header() {
         </div>
 
         {/* Right side actions */}
-        <div className='flex items-center gap-4 md:gap-8'>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className='flex items-center gap-4 md:gap-8'
+        >
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={toggleTheme}
@@ -94,7 +99,7 @@ export default function Header() {
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-        </div>
+        </motion.div>
       </nav>
 
       {isOpen && (
