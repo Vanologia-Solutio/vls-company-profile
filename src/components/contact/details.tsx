@@ -1,7 +1,7 @@
-import contactImage from '@/assets/images/bg/cta.webp'
+import contactImage from '@/assets/images/bg/wa.webp'
 import { CONTACT_INFO, LINK_WHATSAPP } from '@/shared/data/contact'
 import { motion, Variants } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { Send } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -39,7 +39,7 @@ export function Details() {
           initial='hidden'
           whileInView='visible'
           viewport={{ once: true }}
-          className='grid md:grid-cols-3 gap-8'
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
         >
           {CONTACT_INFO.map((info, index) => {
             const Icon = info.icon
@@ -75,7 +75,9 @@ export function Details() {
                       {info.value}
                     </a>
                   )}
-                  {info.title === 'Location' && <p>{info.value}</p>}
+                  {info.title === 'Location' && (
+                    <p className='text-primary'> {info.value}</p>
+                  )}
                   <p>{info.description}</p>
                 </div>
               </motion.div>
@@ -93,7 +95,7 @@ export function Details() {
             className='object-cover grayscale-50 opacity-10'
           />
         </div>
-        <div className='relative z-10 max-w-6xl mx-auto space-y-4'>
+        <div className='relative z-10 max-w-6xl mx-auto px-4 space-y-4'>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -101,9 +103,9 @@ export function Details() {
             viewport={{ once: true }}
             className='text-center'
           >
-            <motion.h4 variants={itemVariants}>
-              Chat With Us on <span className='text-green-500'>WhatsApp</span>
-            </motion.h4>
+            <motion.h3 variants={itemVariants}>
+              Chat With Us on <span className='text-green-600'>WhatsApp</span>
+            </motion.h3>
             <motion.p variants={itemVariants}>
               The fastest way to connect with our experts and get your project
               started.
@@ -129,7 +131,7 @@ export function Details() {
               >
                 <CraftButtonLabel>Contact via WhatsApp</CraftButtonLabel>
                 <CraftButtonIcon>
-                  <ArrowUpRight className='transition-transform duration-500 group-hover:rotate-45 text-foreground' />
+                  <Send className='transition-transform duration-500 group-hover:rotate-45 text-foreground' />
                 </CraftButtonIcon>
               </Link>
             </CraftButton>

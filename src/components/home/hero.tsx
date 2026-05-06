@@ -112,7 +112,7 @@ export function Hero() {
             <Link href='/contact'>
               <CraftButtonLabel>Start Your Project</CraftButtonLabel>
               <CraftButtonIcon>
-                <ArrowUpRight className='transition-transform duration-500 group-hover:rotate-45 dark:text-foreground' />
+                <ArrowUpRight className='transition-transform duration-500 group-hover:rotate-45 text-foreground' />
               </CraftButtonIcon>
             </Link>
           </CraftButton>

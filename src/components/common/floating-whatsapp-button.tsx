@@ -51,7 +51,7 @@ export default function FloatingWhatsAppButton() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.8 }}
                 transition={{ duration: 0.2 }}
-                className='absolute bottom-20 right-0 bg-background border border-border rounded-md shadow-lg shadow-accent/10 min-w-max overflow-hidden'
+                className='absolute bottom-20 right-0 bg-background border border-border rounded-md shadow-lg shadow-green-600/10 min-w-max overflow-hidden'
               >
                 {whatsappMessages.map((msg, idx) => (
                   <a
@@ -59,7 +59,7 @@ export default function FloatingWhatsAppButton() {
                     href={msg.url}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='block px-4 py-3 text-foreground text-sm whitespace-nowrap hover:bg-accent hover:text-primary transition-colors'
+                    className='block px-4 py-3 text-foreground text-sm whitespace-nowrap hover:bg-green-600 hover:text-primary transition-colors'
                     onClick={() => setShowMenu(false)}
                   >
                     {msg.text}
@@ -77,7 +77,7 @@ export default function FloatingWhatsAppButton() {
           >
             <motion.button
               onClick={() => setShowMenu(!showMenu)}
-              className='relative w-14 h-14 bg-linear-to-br from-green-500 to-green-400 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300'
+              className='relative w-14 h-14 bg-linear-to-br from-green-600 to-green-400 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-300'
               whileHover={{
                 boxShadow:
                   '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
@@ -111,7 +111,7 @@ export default function FloatingWhatsAppButton() {
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className='absolute inset-0 bg-green-500 rounded-full opacity-20'
+                className='absolute inset-0 bg-green-600 rounded-full opacity-25'
               />
             </motion.button>
           </motion.div>

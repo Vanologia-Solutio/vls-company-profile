@@ -1,4 +1,4 @@
-import backgroundImage from '@/assets/images/bg/cta.webp'
+import backgroundImage from '@/assets/images/bg/joinus.webp'
 import {
   CraftButton,
   CraftButtonIcon,
@@ -30,7 +30,7 @@ const itemVariants: Variants = {
   },
 }
 
-export function CTA() {
+export function JoinUs() {
   return (
     <section className='py-16 sm:py-24 relative px-4 overflow-hidden'>
       <div className='absolute inset-0 -z-10'>
@@ -50,20 +50,21 @@ export function CTA() {
         className='max-w-6xl mx-auto text-center space-y-6'
       >
         <div className='space-y-4'>
-          <TagBadge label='Ready to Start?' icon='Zap' />
+          <TagBadge label='Be a Part of Us' icon='Hand' />
           <motion.div variants={itemVariants}>
-            <h1>Let&apos;s Build Something</h1>
-            <h1 className='text-transparent bg-clip-text bg-linear-to-b from-accent to-accent/65'>
-              Amazing Together
+            <h1>
+              Join Us on{' '}
+              <span className='text-transparent bg-clip-text bg-linear-to-b from-accent to-accent/65'>
+                This Journey
+              </span>
             </h1>
           </motion.div>
           <motion.p
             variants={itemVariants}
             className='max-w-2xl md:max-w-3xl mx-auto'
           >
-            Whether you&apos;re a startup looking to establish your digital
-            presence or an established business ready for transformation,
-            we&apos;re here to help you succeed.
+            We&apos;re happily looking for passionate individuals to join our
+            team. Let&apos;s build something amazing together.
           </motion.p>
         </div>
 
@@ -77,16 +78,7 @@ export function CTA() {
             asChild
           >
             <Link href='/contact'>
-              <CraftButtonLabel>Schedule a Consultation</CraftButtonLabel>
-            </Link>
-          </CraftButton>
-          <CraftButton
-            size='xl'
-            className='w-full sm:w-auto bg-background text-foreground border border-accent/30'
-            asChild
-          >
-            <Link href='/works'>
-              <CraftButtonLabel>View Portfolio</CraftButtonLabel>
+              <CraftButtonLabel>Start Your Journey</CraftButtonLabel>
               <CraftButtonIcon>
                 <ArrowUpRight className='transition-transform duration-500 group-hover:rotate-45 text-foreground' />
               </CraftButtonIcon>

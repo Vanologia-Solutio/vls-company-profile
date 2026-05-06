@@ -9,24 +9,27 @@ interface ContactInfo {
 }
 
 export const LINK_WHATSAPP = 'https://wa.me/6289523077397'
+export const EMAIL = 'vanologiasolutio@outlook.com'
+export const PHONE = '+62 895-2307-7397'
+export const LOCATION = 'Tangerang, Banten, Indonesia'
 
 export const CONTACT_INFO: ContactInfo[] = [
   {
     icon: Mail,
     title: 'Email',
-    value: 'vanologiasolutio@outlook.com',
-    description: 'We typically respond within 24 hours',
+    value: EMAIL,
+    description: 'We typically respond within 1-2 hours',
   },
   {
     icon: Phone,
     title: 'Phone',
-    value: '+62 895-2307-7397',
-    description: 'Available Monday to Friday, 9-5 EST',
+    value: PHONE,
+    description: 'Available Everyday, 7 AM - 6 PM (GMT+7)',
   },
   {
     icon: MapPin,
     title: 'Location',
-    value: 'Tangerang, Banten, Indonesia',
+    value: LOCATION,
     description: 'Visit our office or work remotely',
   },
 ]

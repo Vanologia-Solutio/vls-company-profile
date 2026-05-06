@@ -29,14 +29,14 @@ const itemVariants: Variants = {
 
 export function FAQ() {
   return (
-    <section className='py-20 bg-linear-to-br from-background to-secondary'>
+    <section className='py-16 sm:py-24 bg-linear-to-br from-background to-secondary'>
       <div className='max-w-6xl mx-auto px-4'>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className='text-center mb-16'
+          className='text-center mb-12 sm:mb-16'
         >
           <motion.h2 variants={itemVariants}>Common Questions</motion.h2>
           <motion.p variants={itemVariants}>
@@ -56,7 +56,7 @@ export function FAQ() {
               <motion.div key={index} variants={itemVariants}>
                 <AccordionItem value={`item-${index}`}>
                   <AccordionTrigger>
-                    <h6>{faq.q}</h6>
+                    <h5 className='font-normal'>{faq.q}</h5>
                   </AccordionTrigger>
                   <AccordionContent>
                     <p>{faq.a}</p>

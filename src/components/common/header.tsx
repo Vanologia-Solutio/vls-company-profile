@@ -8,6 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useTheme } from '../theme-provider'
+import { Separator } from '../ui/separator'
 
 export default function Header() {
   const { isDark, toggleTheme, mounted } = useTheme()
@@ -16,7 +17,7 @@ export default function Header() {
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, 'change', latest => {
-    setIsScrolled(latest > 48)
+    setIsScrolled(latest > 36)
   })
 
   const navItems: { label: string; href: string }[] = [
@@ -29,9 +30,9 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-250',
-        isScrolled
-          ? 'bg-background border-b border-border/60 py-5'
+        'fixed top-0 w-full z-50 transition-all duration-250 font-bebasneue',
+        isScrolled || isOpen
+          ? 'bg-background/80 backdrop-blur-sm py-5 border-b border-border/60 rounded-b-md'
           : 'bg-transparent py-7',
       )}
     >
@@ -54,6 +55,7 @@ export default function Header() {
           </Link>
         </motion.div>
 
+        {/* Desktop Navigation Links */}
         <div className='hidden md:flex items-center gap-8'>
           {navItems.map(({ label, href }, i) => (
             <motion.span
@@ -61,7 +63,7 @@ export default function Header() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + i * 0.1 }}
-              className='font-medium text-foreground hover:text-accent transition-colors relative group'
+              className='text-xl tracking-wide text-foreground hover:text-accent transition-colors relative group'
             >
               <Link href={href}>
                 {label}
@@ -71,51 +73,65 @@ export default function Header() {
           ))}
         </div>
 
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          onClick={toggleTheme}
-          className='p-1.5 rounded-lg bg-muted hover:bg-muted/80 transition-colors'
-          aria-label='Toggle theme'
-        >
-          {mounted && isDark ? (
-            <Sun className='size-5' />
-          ) : (
-            <Moon className='size-5' />
-          )}
-        </motion.button>
+        {/* Right side actions */}
+        <div className='flex items-center gap-4 md:gap-8'>
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={toggleTheme}
+            className='hidden md:flex p-1.5 rounded-lg bg-muted hover:bg-muted/80 transition-colors'
+            aria-label='Toggle theme'
+          >
+            {mounted && isDark ? (
+              <Sun className='size-5' />
+            ) : (
+              <Moon className='size-5' />
+            )}
+          </motion.button>
 
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className='md:hidden text-foreground'
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className='md:hidden text-foreground'
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className='md:hidden bg-card border-b border-border'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className='md:hidden'
         >
-          <div className='max-w-6xl mx-auto px-4 py-4 flex flex-col gap-4'>
+          <div className='max-w-6xl mx-auto px-4 pt-4 flex flex-col gap-2.5'>
             {navItems.map(({ label, href }) => (
               <Link
                 key={label}
                 href={href}
                 onClick={() => setIsOpen(false)}
-                className='text-foreground/80 hover:text-foreground transition-colors text-sm font-medium'
+                className='text-foreground transition-colors text-lg tracking-wide font-medium'
               >
                 {label}
               </Link>
             ))}
-            <Link
-              href='/contact'
-              onClick={() => setIsOpen(false)}
-              className='w-full px-6 py-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors text-sm font-medium mt-2 text-center'
-            >
-              Get Started
-            </Link>
+            <Separator />
+            <div className='flex items-center justify-between'>
+              <span className='text-lg tracking-wide font-medium text-foreground'>
+                Switch Theme
+              </span>
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={toggleTheme}
+                className='p-1.5 rounded-lg bg-muted hover:bg-muted/80 transition-colors'
+                aria-label='Toggle theme'
+              >
+                {mounted && isDark ? (
+                  <Sun className='size-5 text-accent' />
+                ) : (
+                  <Moon className='size-5 text-accent' />
+                )}
+              </motion.button>
+            </div>
           </div>
         </motion.div>
       )}

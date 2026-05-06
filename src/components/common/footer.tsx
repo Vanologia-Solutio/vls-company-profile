@@ -1,6 +1,7 @@
 'use client'
 
 import logo from '@/assets/images/logo.webp'
+import { EMAIL, LINK_WHATSAPP, LOCATION, PHONE } from '@/shared/data/contact'
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import Image from 'next/image'
@@ -128,10 +129,10 @@ export default function Footer() {
             <div>
               <p className='text-muted-foreground text-sm'>Email</p>
               <Link
-                href='mailto:vanologiasolutio@outlook.com'
+                href={`mailto:${EMAIL}`}
                 className='group relative font-semibold text-foreground hover:text-accent transition-colors'
               >
-                vanologiasolutio@outlook.com
+                {EMAIL}
                 <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-250' />
               </Link>
             </div>
@@ -141,12 +142,12 @@ export default function Footer() {
             <div>
               <p className='text-muted-foreground text-sm'>Phone / WhatsApp</p>
               <Link
-                href='https://wa.me/6289523077397'
+                href={LINK_WHATSAPP}
                 target='_blank'
                 className='group relative font-semibold text-foreground hover:text-accent transition-colors'
                 rel='noopener noreferrer'
               >
-                +62 895-2307-7397
+                {PHONE}
                 <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-250' />
               </Link>
             </div>
@@ -155,9 +156,7 @@ export default function Footer() {
             <MapPin size={20} className='text-accent mt-1 shrink-0' />
             <div>
               <p className='text-muted-foreground text-sm'>Location</p>
-              <p className='font-semibold text-foreground'>
-                Tangerang, Banten, Indonesia
-              </p>
+              <p className='font-semibold text-foreground'>{LOCATION}</p>
             </div>
           </div>
         </motion.div>

@@ -1,6 +1,6 @@
 'use client'
 
-import logoBg from '@/assets/images/bg/logo.jpg'
+import logoBg from '@/assets/images/bg/logo.webp'
 import { TagBadge } from '@/components/ui/tag-badge'
 import { Variants, motion } from 'framer-motion'
 import Image from 'next/image'
@@ -142,22 +142,29 @@ export function Mission() {
             Fueled by Technology, Driven by Partnership.
           </motion.h3>
           <motion.p variants={itemVariants} className='mb-2.5'>
-            We build more than just software, we forge lasting partnerships. At
-            Vanologia Solutio, every line of code is crafted with purpose, every
-            design decision is made with your goals in mind, and every solution
-            is built to scale with your vision.
+            We build more than just software, we forge{' '}
+            <strong className='text-primary'>lasting partnerships</strong>. At
+            <strong className='text-primary'> Vanologia Solutio</strong>, every
+            line of code is crafted with purpose, every design decision is made
+            with your goals in mind, and every solution is built to{' '}
+            <strong className='text-primary'>scale with your vision</strong>.
           </motion.p>
           <motion.p variants={itemVariants} className='mb-2.5'>
             Our journey has been marked by countless successful projects,
-            meaningful client relationships, and a commitment to continuous
-            innovation. We&apos;ve evolved from a small team of passionate
-            developers and designers to a comprehensive digital transformation
-            partner.
+            meaningful client relationships, and a commitment to{' '}
+            <strong className='text-primary'>continuous innovation</strong>.{' '}
+            We&apos;ve evolved from a small team of passionate developers and
+            designers to a comprehensive{' '}
+            <strong className='text-primary'>
+              digital transformation partner
+            </strong>
+            .
           </motion.p>
           <motion.p variants={itemVariants}>
             Today, we combine strategic thinking, technical expertise, and
-            creative excellence to deliver solutions that drive real business
-            results for our clients.
+            creative excellence to deliver solutions that drive{' '}
+            <strong className='text-primary'>real business results</strong> for
+            our clients.
           </motion.p>
         </motion.div>
 
