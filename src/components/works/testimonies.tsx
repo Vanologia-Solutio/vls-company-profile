@@ -32,28 +32,28 @@ const itemVariants: Variants = {
 const testimonials = [
   {
     id: 1,
-    name: 'Silvia Cang',
+    name: 'SC',
     role: 'Owner, Central Medica Lampung',
     text: 'Vanologia built a reliable ERP system that streamlined our inventory, reporting, and daily operations. It significantly reduced manual work and improved our overall efficiency.',
     rating: 5,
   },
   {
     id: 2,
-    name: 'Enrico Chen',
+    name: 'EC',
     role: 'Owner, Hemat Indonesia',
     text: 'The package tracking system with barcode and webcam integration transformed how we handle logistics. Our inspection process is now faster, more accurate, and fully trackable.',
     rating: 5,
   },
   {
     id: 3,
-    name: 'Boby Cheung',
+    name: 'BC',
     role: 'Owner, CM Gestun',
     text: 'Our company profile website not only improved our brand presence but also helped us reach more customers online. The team delivered a clean, professional result on time.',
     rating: 5,
   },
   {
     id: 4,
-    name: 'Ekawati',
+    name: 'EK',
     role: 'Owner, Neo Meridian Therapy',
     text: 'The POS and reservation system simplified our sales and booking process. The seamless integration with our printer and reporting tools made daily operations much smoother.',
     rating: 5,
