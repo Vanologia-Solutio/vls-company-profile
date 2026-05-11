@@ -169,11 +169,25 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className='flex flex-col md:flex-row justify-center items-center py-8'
+          className='flex flex-col md:flex-row justify-center md:justify-between items-center py-8'
         >
           <p className='text-muted-foreground text-sm text-center'>
             &copy; {currentYear} Vanologia Solutio. All rights reserved.
           </p>
+          <div className='flex items-center gap-4'>
+            <Link
+              href='/privacy-policy'
+              className='text-muted-foreground text-sm hover:text-accent transition-colors'
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href='/terms-of-service'
+              className='text-muted-foreground text-sm hover:text-accent transition-colors'
+            >
+              Terms of Service
+            </Link>
+          </div>
         </motion.div>
       </div>
     </footer>
