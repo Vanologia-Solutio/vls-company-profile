@@ -75,28 +75,4 @@ export const TEAM: Team[] = [
       github: 'https://www.github.com/udanjin',
     },
   },
-  {
-    name: 'Christian Joy Samuel Tanadi',
-    role: 'Tech Lead',
-    image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/member-profiles/joy.webp',
-    bio: 'Specializing in system design, architecture, and product strategy',
-    socialLinks: {
-      instagram: 'https://www.instagram.com/__christianjoy',
-      linkedin: 'https://www.linkedin.com/in/christian-joy',
-      github: 'https://github.com/christianjoy96',
-    },
-  },
-  {
-    name: 'Vinkent Gunawan',
-    role: 'Software Engineer',
-    image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/member-profiles/vinkent.webp',
-    bio: 'Specializing in backend engineering and API development',
-    socialLinks: {
-      instagram: 'https://www.instagram.com/vinkent_gunawan',
-      linkedin: 'https://www.linkedin.com/in/vinkent-gunawan-b431351b8',
-      github: 'https://github.com/VinkentG',
-    },
-  },
 ]
