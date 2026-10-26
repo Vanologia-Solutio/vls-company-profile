@@ -1,6 +1,7 @@
 import FloatingWhatsAppButton from '@/components/common/floating-whatsapp-button'
 import Footer from '@/components/common/footer'
 import Header from '@/components/common/header'
+import { MotionProvider } from '@/components/motion-provider'
 import { ThemeProvider } from '@/components/theme-provider'
 import type { Metadata } from 'next'
 import { Bebas_Neue, Courgette, Heebo } from 'next/font/google'
@@ -36,26 +37,36 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' className='dark' suppressHydrationWarning>
+      <head>
+        {/* Apply a saved light theme before paint to avoid a dark flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark')}catch(e){}`,
+          }}
+        />
+      </head>
       <body
         className={`${courgette.variable} ${bebasneue.variable} ${heebo.variable} antialiased bg-background text-foreground`}
       >
         <ThemeProvider>
-          <NextTopLoader
-            color='#CA2424'
-            initialPosition={0.08}
-            crawlSpeed={200}
-            height={3}
-            crawl={true}
-            showSpinner={false}
-            easing='ease'
-            speed={200}
-            zIndex={99999}
-          />
-          <Header />
-          {children}
-          <Footer />
-          <FloatingWhatsAppButton />
+          <MotionProvider>
+            <NextTopLoader
+              color='#CA2424'
+              initialPosition={0.08}
+              crawlSpeed={200}
+              height={3}
+              crawl={true}
+              showSpinner={false}
+              easing='ease'
+              speed={200}
+              zIndex={99999}
+            />
+            <Header />
+            {children}
+            <Footer />
+            <FloatingWhatsAppButton />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

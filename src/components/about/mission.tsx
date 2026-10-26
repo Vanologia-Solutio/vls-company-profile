@@ -2,29 +2,10 @@
 
 import logoBg from '@/assets/images/bg/logo.webp'
 import { TagBadge } from '@/components/ui/tag-badge'
-import { Variants, motion } from 'framer-motion'
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8 },
-  },
-}
 
 interface TransformState {
   rotateX: number
@@ -132,16 +113,17 @@ export function Mission() {
     <section className='py-16 sm:py-24'>
       <div className='max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center'>
         <motion.div
-          variants={containerVariants}
+          variants={stagger(0.12)}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
           className='order-2 md:order-1 max-w-2xl md:max-w-3xl'
         >
           <TagBadge label='Our Story' icon='ScrollText' className='mb-4' />
-          <motion.h3 variants={itemVariants} className='mb-2'>
+          <motion.h3 variants={fadeUp} className='mb-2'>
             Fueled by Technology, Driven by Partnership.
           </motion.h3>
-          <motion.p variants={itemVariants} className='mb-2.5'>
+          <motion.p variants={fadeUp} className='mb-2.5'>
             We build more than just software, we forge{' '}
             <strong className='text-primary'>lasting partnerships</strong>. At
             <strong className='text-primary'> Vanologia Solutio</strong>, every
@@ -149,7 +131,7 @@ export function Mission() {
             with your goals in mind, and every solution is built to{' '}
             <strong className='text-primary'>scale with your vision</strong>.
           </motion.p>
-          <motion.p variants={itemVariants} className='mb-2.5'>
+          <motion.p variants={fadeUp} className='mb-2.5'>
             Our journey has been marked by countless successful projects,
             meaningful client relationships, and a commitment to{' '}
             <strong className='text-primary'>continuous innovation</strong>.{' '}
@@ -160,7 +142,7 @@ export function Mission() {
             </strong>
             .
           </motion.p>
-          <motion.p variants={itemVariants}>
+          <motion.p variants={fadeUp}>
             Today, we combine strategic thinking, technical expertise, and
             creative excellence to deliver solutions that drive{' '}
             <strong className='text-primary'>real business results</strong> for
@@ -168,12 +150,15 @@ export function Mission() {
           </motion.p>
         </motion.div>
 
-        <div className='order-1 md:order-2'>
-          <motion.div
+        <motion.div
+          variants={fadeUp}
+          initial='hidden'
+          whileInView='visible'
+          viewport={VIEWPORT}
+          className='order-1 md:order-2'
+        >
+          <div
             ref={containerRef}
-            variants={itemVariants}
-            initial='hidden'
-            animate='visible'
             className='relative aspect-video rounded-xl overflow-hidden shadow-lg bg-muted'
           >
             <div ref={imageRef} className='w-full h-full relative'>
@@ -185,8 +170,8 @@ export function Mission() {
                 priority
               />
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

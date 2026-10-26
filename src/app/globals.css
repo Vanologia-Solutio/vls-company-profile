@@ -140,6 +140,13 @@
     @apply border-border outline-ring/50;
   }
 
+  /* `clip` (not `hidden`) stops side-entering animations from flashing a
+     horizontal scrollbar without breaking `position: sticky`. */
+  html,
+  body {
+    overflow-x: clip;
+  }
+
   body {
     @apply bg-background text-foreground font-heebo;
   }

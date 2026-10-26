@@ -1,4 +1,5 @@
-import { Variants, motion } from 'framer-motion'
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import { Heart, Lightbulb, Target, Users } from 'lucide-react'
 import { ParallaxSection } from '../parallax-section'
 
@@ -29,19 +30,6 @@ const VALUES = [
   },
 ]
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-}
-
 export const CoreValues = () => {
   return (
     <ParallaxSection
@@ -50,24 +38,24 @@ export const CoreValues = () => {
     >
       <div className='max-w-6xl mx-auto px-4'>
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
           whileInView='visible'
-          viewport={{ once: true }}
+          viewport={VIEWPORT}
           className='text-center mb-8 sm:mb-12'
         >
-          <motion.h2 variants={itemVariants}>Our Core Values</motion.h2>
-          <motion.p variants={itemVariants}>
+          <motion.h2 variants={fadeUp}>Our Core Values</motion.h2>
+          <motion.p variants={fadeUp}>
             These principles guide everything we do and define who we are as a
             company.
           </motion.p>
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger(0.08)}
           initial='hidden'
           whileInView='visible'
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={VIEWPORT}
           className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'
         >
           {VALUES.map(value => {
@@ -75,8 +63,8 @@ export const CoreValues = () => {
             return (
               <motion.div
                 key={value.title}
-                variants={itemVariants}
-                className='group relative p-4 sm:p-6 rounded-2xl bg-linear-to-br from-card to-background border border-border hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-1 transition-all duration-250'
+                variants={fadeUp}
+                className='group relative p-4 sm:p-6 rounded-2xl bg-linear-to-br from-card to-background border border-border hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-1 transition-[translate,border-color,box-shadow] duration-250'
               >
                 <div className='absolute inset-0 rounded-2xl bg-linear-to-br from-accent/10 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-250' />
                 <div className='relative z-10'>

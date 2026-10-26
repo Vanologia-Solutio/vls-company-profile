@@ -6,64 +6,34 @@ import {
   CraftButtonLabel,
 } from '@/components/ui/craft-button'
 import { TagBadge } from '@/components/ui/tag-badge'
-import { motion, Variants } from 'framer-motion'
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import { ArrowUpLeft } from 'lucide-react'
 import Link from 'next/link'
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut',
-    },
-  },
-}
 
 export default function TermsOfServicePage() {
   return (
     <main className='pt-32 pb-20 bg-linear-to-b from-accent/10 via-accent/25 to-accent/10'>
-      <motion.section
-        variants={containerVariants}
-        initial='hidden'
-        animate='visible'
-        id='privacy-policy'
-        className='max-w-6xl mx-auto px-4 space-y-6'
-      >
-        <motion.div
-          variants={containerVariants}
-          initial='hidden'
-          animate='visible'
-        >
+      <section id='privacy-policy' className='max-w-6xl mx-auto px-4 space-y-6'>
+        <motion.div variants={stagger()} initial='hidden' animate='visible'>
           <TagBadge
             icon='ShieldCheck'
             label='Your Privacy Matters'
             className='mb-4'
           />
-          <motion.h1 variants={itemVariants}>Privacy Policy</motion.h1>
-          <motion.span variants={itemVariants} className='sub'>
+          <motion.h1 variants={fadeUp}>Privacy Policy</motion.h1>
+          <motion.span variants={fadeUp} className='sub'>
             Effective date: May 11, 2026
           </motion.span>
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.p variants={itemVariants} className='mb-4'>
+          <motion.p variants={fadeUp} className='mb-4'>
             Welcome to Vanologia Solutio. Your privacy is important to us, and
             we are committed to protecting any information shared through this
             website. This Privacy Policy explains how information may be
@@ -74,14 +44,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Information We Collect
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               Vanologia Solutio may collect limited information when users
               interact with the website, contact us through available
@@ -104,14 +75,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             How We Use Information
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               Any information collected through the website is used solely to
               support communication, improve website functionality, and enhance
@@ -127,14 +99,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Analytics and Cookies
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               Our website may use basic analytics tools and cookies to
               understand visitor activity and improve website performance. These
@@ -155,14 +128,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             External Links
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               This website may contain links to third-party platforms and
               services, including WhatsApp, Instagram, email services, or other
@@ -179,14 +153,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Data Protection
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               Vanologia Solutio takes reasonable measures to help protect
               information submitted through this website. While we strive to
@@ -202,14 +177,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Intellectual Property
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               All content available on this website, including text, graphics,
               branding elements, visuals, and design materials, is the property
@@ -221,14 +197,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Changes to This Policy
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               This Privacy Policy may be updated periodically to reflect changes
               in our services, website functionality, or applicable regulations.
@@ -239,14 +216,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Contact
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               If you have questions regarding this Privacy Policy or the
               handling of information related to this website, you may contact
@@ -254,7 +232,7 @@ export default function TermsOfServicePage() {
             </p>
             <ul className='list-disc list-inside leading-relaxed text-muted-foreground'>
               <li>Website: https://www.vanologiasolutio.my.id/</li>
-              <li>Email: vanologiasolutioVoutlook.com</li>
+              <li>Email: vanologiasolutio@outlook.com</li>
               <li>Instagram: @vanologiasolutio</li>
               <li>Phone/WhatsApp: +6289523077397</li>
             </ul>
@@ -262,9 +240,10 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={fadeUp}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
           <CraftButton size='xl' asChild>
             <Link href='/'>
@@ -275,7 +254,7 @@ export default function TermsOfServicePage() {
             </Link>
           </CraftButton>
         </motion.div>
-      </motion.section>
+      </section>
     </main>
   )
 }

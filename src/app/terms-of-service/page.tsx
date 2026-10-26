@@ -6,64 +6,37 @@ import {
   CraftButtonLabel,
 } from '@/components/ui/craft-button'
 import { TagBadge } from '@/components/ui/tag-badge'
-import { motion, Variants } from 'framer-motion'
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import { ArrowUpLeft } from 'lucide-react'
 import Link from 'next/link'
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut',
-    },
-  },
-}
 
 export default function TermsOfServicePage() {
   return (
     <main className='py-16 sm:py-24 bg-linear-to-b from-accent/15 via-accent/30 to-background'>
-      <motion.section
-        variants={containerVariants}
-        initial='hidden'
-        animate='visible'
+      <section
         id='terms-of-service'
         className='max-w-6xl mx-auto px-4 space-y-6'
       >
-        <motion.div
-          variants={containerVariants}
-          initial='hidden'
-          animate='visible'
-        >
+        <motion.div variants={stagger()} initial='hidden' animate='visible'>
           <TagBadge
             icon='NotepadText'
             label='Terms of Service'
             className='mb-4'
           />
-          <motion.h1 variants={itemVariants}>Terms of Service</motion.h1>
-          <motion.span variants={itemVariants} className='sub'>
+          <motion.h1 variants={fadeUp}>Terms of Service</motion.h1>
+          <motion.span variants={fadeUp} className='sub'>
             Effective date: May 11, 2026
           </motion.span>
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.p variants={itemVariants} className='mb-4'>
+          <motion.p variants={fadeUp} className='mb-4'>
             Welcome to Vanologia Solutio. These Terms of Service govern your
             access to and use of this website and any related services provided
             by Vanologia Solutio. By accessing or using this website, you agree
@@ -73,14 +46,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Use of the Website
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               This website is intended to provide information about Vanologia
               Solutio, including our services, portfolio, contact channels, and
@@ -96,14 +70,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Services and Project Agreements
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               Vanologia Solutio provides services related to web development,
               SaaS and digital platforms, visual and graphic design, as well as
@@ -124,14 +99,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Intellectual Property
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               All content available on this website, including but not limited
               to text, branding, graphics, visuals, logos, layouts, and design
@@ -147,14 +123,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Third-Party Links
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               This website may contain links to third-party services and
               platforms, including WhatsApp, Instagram, email services, and
@@ -170,14 +147,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Disclaimer
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               The information provided on this website is intended for general
               informational purposes only. While we strive to keep information
@@ -194,14 +172,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Limitation of Liability
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               Vanologia Solutio shall not be held liable for any indirect,
               incidental, consequential, or business-related losses resulting
@@ -216,14 +195,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Modifications to the Terms
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               Vanologia Solutio reserves the right to modify or update these
               Terms of Service at any time without prior notice. Updated
@@ -238,14 +218,15 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
-          <motion.h4 variants={itemVariants} className='leading-loose'>
+          <motion.h4 variants={fadeUp} className='leading-loose'>
             Contact
           </motion.h4>
-          <motion.div variants={itemVariants} className='space-y-2.5'>
+          <motion.div variants={fadeUp} className='space-y-2.5'>
             <p>
               If you have questions regarding this Privacy Policy or the
               handling of information related to this website, you may contact
@@ -253,7 +234,7 @@ export default function TermsOfServicePage() {
             </p>
             <ul className='list-disc list-inside leading-relaxed text-muted-foreground'>
               <li>Website: https://www.vanologiasolutio.my.id/</li>
-              <li>Email: vanologiasolutioVoutlook.com</li>
+              <li>Email: vanologiasolutio@outlook.com</li>
               <li>Instagram: @vanologiasolutio</li>
               <li>Phone/WhatsApp: +6289523077397</li>
             </ul>
@@ -261,9 +242,10 @@ export default function TermsOfServicePage() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={fadeUp}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
         >
           <CraftButton size='xl' asChild>
             <Link href='/'>
@@ -274,7 +256,7 @@ export default function TermsOfServicePage() {
             </Link>
           </CraftButton>
         </motion.div>
-      </motion.section>
+      </section>
     </main>
   )
 }

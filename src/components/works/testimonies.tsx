@@ -5,29 +5,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import { motion, Variants } from 'framer-motion'
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
 import { TagBadge } from '../ui/tag-badge'
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8 },
-  },
-}
 
 const testimonials = [
   {
@@ -58,6 +39,13 @@ const testimonials = [
     text: 'The POS and reservation system simplified our sales and booking process. The seamless integration with our printer and reporting tools made daily operations much smoother.',
     rating: 5,
   },
+  {
+    id: 5,
+    name: 'LP',
+    role: 'Owner, Klinik Kecantikan Aristée',
+    text: 'Thank you, Vanologia Solutio, for your support of Aristée Beauty Clinic. We truly appreciate your prompt responses and your clear understanding of our needs. The landing page, WhatsApp Business setup, catalog upload, and all other deliverables fully met our expectations.',
+    rating: 5,
+  },
 ]
 
 export function Testimonies() {
@@ -65,20 +53,27 @@ export function Testimonies() {
     <section className='relative py-16 sm:py-24 bg-linear-to-b from-background via-accent/5 to-background'>
       <div className='max-w-6xl mx-auto px-4'>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          variants={stagger()}
+          initial='hidden'
+          whileInView='visible'
+          viewport={VIEWPORT}
           className='text-center mb-8 sm:mb-12'
         >
           <TagBadge label='Testimonies' icon='Quote' className='mb-4' />
-          <motion.h2 variants={itemVariants}>What Our Clients Say</motion.h2>
-          <motion.p variants={itemVariants}>
+          <motion.h2 variants={fadeUp}>What Our Clients Say</motion.h2>
+          <motion.p variants={fadeUp}>
             See how we&apos;ve helped businesses transform their digital
             presence.
           </motion.p>
         </motion.div>
 
-        <motion.div className='relative'>
+        <motion.div
+          variants={fadeUp}
+          initial='hidden'
+          whileInView='visible'
+          viewport={VIEWPORT}
+          className='relative'
+        >
           <Carousel
             className='w-full'
             opts={{
@@ -92,13 +87,7 @@ export function Testimonies() {
                   key={testimonial.id}
                   className='pl-4 basis-full sm:basis-1/2 lg:basis-1/3'
                 >
-                  <motion.div
-                    variants={containerVariants}
-                    initial='hidden'
-                    whileInView='visible'
-                    viewport={{ once: true }}
-                    className='rounded-md border border-border bg-card p-4 lg:p-6 text-center h-full flex flex-col justify-center hover:border-accent transition-all duration-250'
-                  >
+                  <div className='rounded-md border border-border bg-card p-4 lg:p-6 text-center h-full flex flex-col justify-center hover:border-accent transition-colors duration-250'>
                     <div className='flex justify-center gap-1 mb-2.5'>
                       {Array.from({ length: testimonial.rating }).map(
                         (_, i) => (
@@ -120,12 +109,14 @@ export function Testimonies() {
                         {testimonial.role}
                       </span>
                     </div>
-                  </motion.div>
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className='hidden md:block' />
-            <CarouselNext className='hidden md:block' />
+            <div className='flex justify-center gap-3 mt-6 sm:mt-8'>
+              <CarouselPrevious className='static size-10 translate-y-0' />
+              <CarouselNext className='static size-10 translate-y-0' />
+            </div>
           </Carousel>
         </motion.div>
       </div>

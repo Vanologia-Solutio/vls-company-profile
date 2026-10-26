@@ -4,28 +4,9 @@ import saas from '@/assets/images/bg/saas.webp'
 import webdev from '@/assets/images/bg/webdev.webp'
 import { TagBadge } from '@/components/ui/tag-badge'
 import { cn } from '@/lib/utils'
-import { motion, Variants } from 'framer-motion'
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8 },
-  },
-}
 
 const SERVICES = [
   {
@@ -63,17 +44,18 @@ export function ListServices() {
     <section className='py-16 sm:py-24'>
       <div className='max-w-6xl mx-auto space-y-12 px-4'>
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
-          animate='visible'
+          whileInView='visible'
+          viewport={VIEWPORT}
           className='max-w-2xl md:max-w-3xl'
         >
           <TagBadge label='Our Expertise' icon='Package' className='mb-4' />
-          <motion.h3 variants={itemVariants} className='mb-2'>
+          <motion.h3 variants={fadeUp} className='mb-2'>
             Web System Development, Digital Platform, Visual Graphic Design, and
             Data Solution, all in One Place.
           </motion.h3>
-          <motion.p variants={itemVariants}>
+          <motion.p variants={fadeUp}>
             We provide a complete suite of digital transformation services,
             ensuring your business has the tools, visuals, and insights it needs
             to succeed in the modern market.
@@ -85,15 +67,15 @@ export function ListServices() {
           return (
             <motion.div
               key={service.id}
-              variants={itemVariants}
+              variants={fadeUp}
               initial='hidden'
               whileInView='visible'
-              viewport={{ once: true }}
+              viewport={VIEWPORT}
               className='grid md:grid-cols-2 gap-4 md:gap-12 items-center'
             >
               <div
                 className={cn(
-                  'group rounded-lg overflow-hidden aspect-3/2 border backdrop-blur-sm transition-all duration-250 relative',
+                  'group rounded-lg overflow-hidden aspect-3/2 border backdrop-blur-sm relative',
                   isEven ? 'order-1' : 'order-1 md:order-2',
                 )}
               >

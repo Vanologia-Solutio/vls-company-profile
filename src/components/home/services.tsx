@@ -1,6 +1,7 @@
 'use client'
 
-import { motion, Variants } from 'framer-motion'
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import { BarChart3, Code, Palette, Rocket, Shield, Zap } from 'lucide-react'
 import { ParallaxSection } from '../parallax-section'
 import { TagBadge } from '../ui/tag-badge'
@@ -44,50 +45,21 @@ const services = [
   },
 ]
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
-}
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-}
-
 export function Services() {
   return (
     <ParallaxSection id='services' className='py-16 sm:py-24 overflow-hidden'>
       <div className='relative z-10 max-w-6xl mx-auto px-4'>
         {/* Header */}
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
           whileInView='visible'
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={VIEWPORT}
           className='text-center mb-8 sm:mb-12'
         >
           <TagBadge label='What We Offer' icon='HandHelping' className='mb-4' />
-          <motion.h2 variants={itemVariants}>Our Services</motion.h2>
-          <motion.p variants={itemVariants}>
+          <motion.h2 variants={fadeUp}>Our Services</motion.h2>
+          <motion.p variants={fadeUp}>
             Comprehensive digital solutions tailored to meet your unique
             business needs and drive growth.
           </motion.p>
@@ -95,10 +67,10 @@ export function Services() {
 
         {/* Services Grid */}
         <motion.div
-          variants={containerVariants}
+          variants={stagger(0.08)}
           initial='hidden'
           whileInView='visible'
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={VIEWPORT}
           className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8'
         >
           {services.map((service, index) => {
@@ -106,8 +78,8 @@ export function Services() {
             return (
               <motion.div
                 key={index}
-                variants={cardVariants}
-                className='group relative p-6 sm:p-8 rounded-2xl bg-linear-to-br from-card to-background border border-border hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-1 transition-all duration-250'
+                variants={fadeUp}
+                className='group relative p-6 sm:p-8 rounded-2xl bg-linear-to-br from-card to-background border border-border hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10 hover:-translate-y-1 transition-[translate,border-color,box-shadow] duration-250'
               >
                 <div className='absolute inset-0 rounded-2xl bg-linear-to-br from-accent/10 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-all duration-250' />
                 <div className='relative z-10'>

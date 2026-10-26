@@ -17,7 +17,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true)
   const [mounted, setMounted] = useState(false)
 
   const updateTheme = (dark: boolean) => {
@@ -30,11 +30,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
-    const stored = localStorage.getItem('theme')
-    const prefersDark = window.matchMedia(
-      '(prefers-color-scheme: dark)',
-    ).matches
-    const shouldBeDark = stored === 'dark' || (!stored && prefersDark)
+    // Dark by default; light only when the visitor picked it
+    const shouldBeDark = localStorage.getItem('theme') !== 'light'
 
     updateTheme(shouldBeDark)
 
@@ -43,19 +40,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       setMounted(true)
     }, 0)
 
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    const handleChange = (e: MediaQueryListEvent) => {
-      if (!localStorage.getItem('theme')) {
-        setIsDark(e.matches)
-        updateTheme(e.matches)
-      }
-    }
-    mediaQuery.addEventListener('change', handleChange)
-
-    return () => {
-      clearTimeout(timeoutId)
-      mediaQuery.removeEventListener('change', handleChange)
-    }
+    return () => clearTimeout(timeoutId)
   }, [])
 
   const toggleTheme = () => {

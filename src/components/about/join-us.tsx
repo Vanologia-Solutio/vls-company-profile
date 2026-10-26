@@ -5,30 +5,11 @@ import {
   CraftButtonLabel,
 } from '@/components/ui/craft-button'
 import { TagBadge } from '@/components/ui/tag-badge'
-import { motion, Variants } from 'framer-motion'
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
-}
 
 export function JoinUs() {
   return (
@@ -43,15 +24,15 @@ export function JoinUs() {
       </div>
 
       <motion.div
-        variants={containerVariants}
+        variants={stagger()}
         initial='hidden'
         whileInView='visible'
-        viewport={{ once: true }}
+        viewport={VIEWPORT}
         className='max-w-6xl mx-auto text-center space-y-6'
       >
         <div className='space-y-4'>
           <TagBadge label='Be a Part of Us' icon='Hand' />
-          <motion.div variants={itemVariants}>
+          <motion.div variants={fadeUp}>
             <h1>
               Join Us on{' '}
               <span className='text-transparent bg-clip-text bg-linear-to-b from-accent to-accent/65'>
@@ -60,7 +41,7 @@ export function JoinUs() {
             </h1>
           </motion.div>
           <motion.p
-            variants={itemVariants}
+            variants={fadeUp}
             className='max-w-2xl md:max-w-3xl mx-auto'
           >
             We&apos;re happily looking for passionate individuals to join our
@@ -69,7 +50,7 @@ export function JoinUs() {
         </div>
 
         <motion.div
-          variants={itemVariants}
+          variants={fadeUp}
           className='flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-start sm:justify-center'
         >
           <CraftButton

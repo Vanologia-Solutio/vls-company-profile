@@ -2,7 +2,8 @@
 
 import { cn } from '@/lib/utils'
 import { PROJECTS } from '@/shared/data/works'
-import { motion, Variants } from 'framer-motion'
+import { EASE_OUT, fadeLeft, fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,26 +15,6 @@ import {
   CraftButtonLabel,
 } from '../ui/craft-button'
 import { TagBadge } from '../ui/tag-badge'
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
-}
 
 export function Works() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -90,14 +71,14 @@ export function Works() {
     <div className='relative bg-linear-to-b from-background via-accent/15 to-accent/30 py-16 sm:py-24'>
       {/* Header Section */}
       <motion.div
-        variants={containerVariants}
+        variants={stagger()}
         initial='hidden'
         whileInView='visible'
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={VIEWPORT}
         className='text-center space-y-4 mb-12 sm:mb-16 px-4'
       >
         <TagBadge label='Our Portfolio' icon='Briefcase' />
-        <motion.h2 variants={itemVariants}>Recent Works</motion.h2>
+        <motion.h2 variants={fadeUp}>Recent Works</motion.h2>
       </motion.div>
 
       {/* Parallax Vertical Scroll Layout */}
@@ -106,10 +87,10 @@ export function Works() {
           <div className='grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12'>
             {/* Sticky Information Panel - Left Side (Desktop Only) */}
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              variants={fadeLeft}
+              initial='hidden'
+              whileInView='visible'
+              viewport={VIEWPORT}
               className='hidden lg:block lg:col-span-2 lg:sticky lg:top-32 h-fit'
             >
               <div className='space-y-6'>
@@ -119,7 +100,7 @@ export function Works() {
                     key={`category-${currentWorkIndex}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.35, ease: EASE_OUT }}
                     className='inline-block text-sm font-semibold text-accent uppercase tracking-wider'
                   >
                     {featuredWorks[currentWorkIndex].category}
@@ -129,7 +110,7 @@ export function Works() {
                     key={`title-${currentWorkIndex}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.05 }}
+                    transition={{ duration: 0.35, ease: EASE_OUT, delay: 0.05 }}
                   >
                     {featuredWorks[currentWorkIndex].title}
                   </motion.h2>
@@ -138,7 +119,7 @@ export function Works() {
                     key={`desc-${currentWorkIndex}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
+                    transition={{ duration: 0.35, ease: EASE_OUT, delay: 0.1 }}
                   >
                     {featuredWorks[currentWorkIndex].description}
                   </motion.p>
@@ -159,7 +140,11 @@ export function Works() {
                         key={tag}
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: idx * 0.05 }}
+                        transition={{
+                          duration: 0.3,
+                          ease: EASE_OUT,
+                          delay: idx * 0.04,
+                        }}
                         className={cn(badgeVariants({ variant: 'default' }))}
                       >
                         {tag}
@@ -179,16 +164,16 @@ export function Works() {
                       {String(featuredWorks.length).padStart(2, '0')}
                     </span>
                   </div>
-                  <motion.div className='w-full h-2 bg-muted rounded-full overflow-hidden'>
+                  <div className='w-full h-2 bg-muted rounded-full overflow-hidden'>
                     <motion.div
-                      initial={{ width: '0%' }}
+                      initial={{ scaleX: 0 }}
                       animate={{
-                        width: `${((currentWorkIndex + 1) / featuredWorks.length) * 100}%`,
+                        scaleX: (currentWorkIndex + 1) / featuredWorks.length,
                       }}
-                      transition={{ duration: 0.6 }}
-                      className='h-full bg-accent rounded-full'
+                      transition={{ duration: 0.6, ease: EASE_OUT }}
+                      className='h-full bg-accent rounded-full origin-left'
                     />
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Call to Action */}
@@ -211,8 +196,12 @@ export function Works() {
                     if (el) cardRefs.current[index] = el
                   }}
                   key={work.id}
+                  variants={fadeUp}
+                  initial='hidden'
+                  whileInView='visible'
+                  viewport={VIEWPORT}
                   className={cn(
-                    'group rounded-lg overflow-hidden bg-card border backdrop-blur-sm transition-all duration-300',
+                    'group relative rounded-lg overflow-hidden bg-card border backdrop-blur-sm transition-[box-shadow,filter] duration-300',
                     index === currentWorkIndex
                       ? 'shadow-2xl shadow-accent/20'
                       : 'grayscale-80',

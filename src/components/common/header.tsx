@@ -1,11 +1,14 @@
 'use client'
 
+import logoDark from '@/assets/images/logo-dark.webp'
 import logo from '@/assets/images/logo.webp'
+import { EASE_OUT } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { useTheme } from '../theme-provider'
 import { Separator } from '../ui/separator'
@@ -15,6 +18,10 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isScrolled, setIsScrolled] = useState<boolean>(false)
   const { scrollY } = useScroll()
+  const pathname = usePathname()
+
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`)
 
   useMotionValueEvent(scrollY, 'change', latest => {
     setIsScrolled(latest > 36)
@@ -38,9 +45,9 @@ export default function Header() {
     >
       <nav className='max-w-6xl mx-auto px-4 flex items-center justify-between'>
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: EASE_OUT }}
           className='flex items-center gap-2'
         >
           <Link href='/' className='shrink-0'>
@@ -50,7 +57,15 @@ export default function Header() {
               width={100}
               height={100}
               loading='eager'
-              className='h-6 w-auto sm:h-8'
+              className='h-6 w-auto sm:h-8 dark:hidden'
+            />
+            <Image
+              src={logoDark}
+              alt='Logo'
+              width={100}
+              height={100}
+              loading='eager'
+              className='hidden h-6 w-auto sm:h-8 dark:block'
             />
           </Link>
         </motion.div>
@@ -60,14 +75,29 @@ export default function Header() {
           {navItems.map(({ label, href }, i) => (
             <motion.span
               key={href}
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + i * 0.1 }}
-              className='text-xl tracking-wide text-foreground hover:text-accent transition-colors relative group'
+              transition={{
+                duration: 0.5,
+                ease: EASE_OUT,
+                delay: 0.1 + i * 0.06,
+              }}
+              className={cn(
+                'text-xl tracking-wide hover:text-accent transition-colors relative group',
+                isActive(href) ? 'text-accent' : 'text-foreground',
+              )}
             >
-              <Link href={href}>
+              <Link
+                href={href}
+                aria-current={isActive(href) ? 'page' : undefined}
+              >
                 {label}
-                <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-250' />
+                <span
+                  className={cn(
+                    'absolute bottom-0 left-0 h-0.5 bg-accent group-hover:w-full transition-all duration-250',
+                    isActive(href) ? 'w-full' : 'w-0',
+                  )}
+                />
               </Link>
             </motion.span>
           ))}
@@ -75,9 +105,9 @@ export default function Header() {
 
         {/* Right side actions */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.3 }}
           className='flex items-center gap-4 md:gap-8'
         >
           <motion.button
@@ -104,8 +134,9 @@ export default function Header() {
 
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25, ease: EASE_OUT }}
           className='md:hidden'
         >
           <div className='max-w-6xl mx-auto px-4 pt-4 flex flex-col gap-2.5'>
@@ -114,7 +145,11 @@ export default function Header() {
                 key={label}
                 href={href}
                 onClick={() => setIsOpen(false)}
-                className='text-foreground transition-colors text-lg tracking-wide font-medium'
+                aria-current={isActive(href) ? 'page' : undefined}
+                className={cn(
+                  'transition-colors text-lg tracking-wide font-medium',
+                  isActive(href) ? 'text-accent' : 'text-foreground',
+                )}
               >
                 {label}
               </Link>

@@ -1,5 +1,6 @@
 import { TEAM } from '@/shared/data/about'
-import { motion, Variants } from 'framer-motion'
+import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ParallaxSection } from '../parallax-section'
 import {
@@ -11,26 +12,6 @@ import {
 } from '../ui/card'
 import { TagBadge } from '../ui/tag-badge'
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
-}
-
 export function Team() {
   return (
     <ParallaxSection
@@ -39,49 +20,51 @@ export function Team() {
     >
       <div className='max-w-6xl mx-auto px-4'>
         <motion.div
-          variants={containerVariants}
+          variants={stagger()}
           initial='hidden'
           whileInView='visible'
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={VIEWPORT}
           className='text-center mb-8 sm:mb-12'
         >
           <TagBadge label='Our People' icon='Users' className='mb-4' />
-          <motion.h2 variants={itemVariants}>Meet The Team</motion.h2>
-          <motion.p variants={itemVariants}>
+          <motion.h2 variants={fadeUp}>Meet The Team</motion.h2>
+          <motion.p variants={fadeUp}>
             Meet the individuals behind Vanologia Solutio, each bringing unique
             skills and passion to every project.
           </motion.p>
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger(0.08)}
           initial='hidden'
           whileInView='visible'
-          viewport={{ once: true }}
+          viewport={VIEWPORT}
           className='grid sm:grid-cols-2 md:grid-cols-3 gap-6'
         >
           {TEAM.map(member => (
-            <Card key={member.name} className='pt-0 overflow-hidden'>
-              <CardContent className='relative aspect-square p-0'>
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className='object-cover'
-                />
-              </CardContent>
-              <CardHeader>
-                <CardTitle className='text-lg md:text-xl'>
-                  {member.name}
-                </CardTitle>
-                <CardDescription className='text-xs md:text-sm text-accent uppercase font-semibold'>
-                  {member.role}
-                </CardDescription>
-                <CardDescription className='line-clamp-2'>
-                  {member.bio}
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            <motion.div key={member.name} variants={fadeUp}>
+              <Card className='pt-0 overflow-hidden h-full'>
+                <CardContent className='relative aspect-square p-0'>
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className='object-cover'
+                  />
+                </CardContent>
+                <CardHeader>
+                  <CardTitle className='text-lg md:text-xl'>
+                    {member.name}
+                  </CardTitle>
+                  <CardDescription className='text-xs md:text-sm text-accent uppercase font-semibold'>
+                    {member.role}
+                  </CardDescription>
+                  <CardDescription className='line-clamp-2'>
+                    {member.bio}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </motion.div>
           ))}
         </motion.div>
       </div>

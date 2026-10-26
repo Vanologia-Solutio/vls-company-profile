@@ -1,45 +1,23 @@
 import { Badge } from '@/components/ui/badge'
 import { PROJECTS } from '@/shared/data/works'
-import { motion, Variants } from 'framer-motion'
+import { fadeUp, VIEWPORT } from '@/lib/motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 const MAX_TAGS = 5
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8 },
-  },
-}
-
 export function Projects() {
   return (
     <section className='py-16 sm:py-24 max-w-6xl mx-auto px-4'>
-      <motion.div
-        variants={containerVariants}
-        initial='hidden'
-        animate='visible'
-        className='grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8'
-      >
+      <div className='grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8'>
         {PROJECTS.map((project, index) => (
           <motion.div
-            variants={itemVariants}
-            viewport={{ once: true }}
             key={index}
-            className='group relative aspect-3/2 overflow-hidden rounded-md shadow-sm outline outline-transparent hover:outline-accent hover:shadow-lg transition-all duration-250'
+            variants={fadeUp}
+            initial='hidden'
+            whileInView='visible'
+            viewport={VIEWPORT}
+            className='group relative aspect-3/2 overflow-hidden rounded-md shadow-sm outline outline-transparent hover:outline-accent hover:shadow-lg transition-[outline-color,box-shadow] duration-250'
           >
             <div className='z-20 absolute size-full inset-0 bg-linear-to-t from-card via-card/50 to-transparent flex flex-col items-start justify-end gap-1.5 p-4'>
               <div>
@@ -61,11 +39,11 @@ export function Projects() {
               src={project.image}
               alt={project.title}
               fill
-              className='object-cover group-hover:scale-105 transition-all duration-250'
+              className='object-cover group-hover:scale-105 transition-transform duration-250'
             />
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </section>
   )
 }
