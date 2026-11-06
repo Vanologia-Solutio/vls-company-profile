@@ -208,3 +208,12 @@
     display: none;
   }
 }
+/* Fill for the active dot in the project image slider */
+@keyframes slider-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

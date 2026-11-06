@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from 'react'
 import { badgeVariants } from '../ui/badge'
 import { TagBadge } from '../ui/tag-badge'
 import { ProjectActions } from '../works/project-actions'
-import { ProjectImage } from '../works/project-image'
+import { ProjectImageSlider } from '../works/project-image-slider'
 
 export function Works() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -207,21 +207,26 @@ export function Works() {
                       : 'lg:grayscale-80',
                   )}
                 >
-                  <Link
-                    href={`/works/${work.id}`}
-                    aria-label={`Read the ${work.title} case study`}
-                    className='relative block overflow-hidden w-full aspect-3/2'
-                  >
-                    <ProjectImage
+                  <div className='relative overflow-hidden w-full aspect-3/2'>
+                    <ProjectImageSlider
                       project={work}
                       sizes='(min-width: 1024px) 60vw, 100vw'
+                      // Offset neighbouring cards so they don't all slide at once
+                      startDelay={(index % 3) * 900}
                       className='transition-transform duration-500 group-hover:scale-105'
                     />
-                    <span className='absolute top-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-background/85 backdrop-blur-sm px-3 py-1.5 text-xs font-medium opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-[opacity,transform] duration-300'>
-                      Read case study
-                      <ArrowUpRight className='size-3.5' />
-                    </span>
-                  </Link>
+                    {/* Link overlays the image; slider controls sit above it (z-20) */}
+                    <Link
+                      href={`/works/${work.id}`}
+                      aria-label={`Read the ${work.title} case study`}
+                      className='absolute inset-0 z-10'
+                    >
+                      <span className='absolute top-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-background/85 backdrop-blur-sm px-3 py-1.5 text-xs font-medium opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-[opacity,transform] duration-300'>
+                        Read case study
+                        <ArrowUpRight className='size-3.5' />
+                      </span>
+                    </Link>
+                  </div>
 
                   {/* Project info (mobile / tablet, where the sticky panel is hidden) */}
                   <div className='lg:hidden p-4 sm:p-5 space-y-3'>

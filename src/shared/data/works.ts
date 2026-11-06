@@ -2,7 +2,11 @@ export const workStats: { id: number; title: string; value: string }[] = [
   { id: 1, title: 'Projects Completed', value: '50+' },
   { id: 2, title: 'Happy Clients', value: '25+' },
   { id: 3, title: 'Team Members', value: '10' },
-  { id: 4, title: 'Years Experience', value: `${new Date().getFullYear() - 2024}+` },
+  {
+    id: 4,
+    title: 'Years Experience',
+    value: `${new Date().getFullYear() - 2024}+`,
+  },
 ]
 
 export type ProjectType = 'Business System' | 'E-commerce' | 'Website'
@@ -44,8 +48,12 @@ export interface Project {
   client: string
   platform: string
   description: string
-  // Optional: a branded placeholder is shown until a thumbnail is uploaded
+  // Optional: a branded placeholder is shown until a thumbnail is uploaded.
+  // Cover image, also used for Open Graph and small thumbnails.
   image?: string
+  // Optional extra screenshots. Shown after `image` in the project card's
+  // auto-sliding carousel, so there's no need to merge them into one image.
+  images?: string[]
   tags: string[]
   link?: string
   background: {
@@ -474,6 +482,13 @@ export const PROJECTS: Project[] = [
     platform: 'Landing Page & Treatment Catalogue',
     description:
       'A doctor-supervised beauty clinic in Pringsewu, Lampung. A landing page with a full treatment catalogue, local SEO and WhatsApp booking, delivered together with the WhatsApp Business setup and catalogue upload.',
+    // TODO: sample images to preview the slider, replace with Aristée screenshots
+    image:
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/medilink.webp',
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/cmgestun.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroutepeps.webp',
+    ],
     tags: [
       'Landing Page',
       'Treatment Catalogue',
@@ -1339,4 +1354,12 @@ export function getHostname(url: string) {
   } catch {
     return url
   }
+}
+
+// Cover first, then the extra screenshots, without duplicates.
+export function getProjectImages(project: Pick<Project, 'image' | 'images'>) {
+  const all = [project.image, ...(project.images ?? [])].filter(
+    (src): src is string => Boolean(src),
+  )
+  return [...new Set(all)]
 }

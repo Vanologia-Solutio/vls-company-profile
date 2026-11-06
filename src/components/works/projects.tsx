@@ -15,7 +15,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { ProjectImage } from './project-image'
+import { ProjectImageSlider } from './project-image-slider'
 
 const MAX_TAGS = 3
 
@@ -100,7 +100,7 @@ export function Projects() {
 
       <motion.div layout className='grid sm:grid-cols-2 gap-6 md:gap-8'>
         <AnimatePresence mode='popLayout' initial={false}>
-          {visible.map(project => (
+          {visible.map((project, index) => (
             <motion.div
               key={project.id}
               layout
@@ -109,7 +109,7 @@ export function Projects() {
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.35, ease: EASE_OUT }}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} index={index} />
             </motion.div>
           ))}
         </AnimatePresence>
@@ -118,7 +118,7 @@ export function Projects() {
   )
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <motion.article
       variants={fadeUp}
@@ -128,9 +128,11 @@ function ProjectCard({ project }: { project: Project }) {
       className='group relative h-full flex flex-col rounded-lg border border-border bg-card overflow-hidden hover:border-accent/60 hover:shadow-xl hover:shadow-accent/10 transition-[border-color,box-shadow] duration-300'
     >
       <div className='relative aspect-3/2 overflow-hidden'>
-        <ProjectImage
+        <ProjectImageSlider
           project={project}
           sizes='(min-width: 640px) 50vw, 100vw'
+          // Offset neighbouring cards so they don't all slide at once
+          startDelay={(index % 4) * 900}
           className='group-hover:scale-[1.025] transition-transform duration-500'
         />
         <span className='absolute top-3 left-3 rounded-full bg-background/80 backdrop-blur-sm px-3 py-1 text-xs font-medium'>
