@@ -20,6 +20,8 @@ interface ProjectImageSliderProps {
   startDelay?: number
   // Applied to the carousel viewport (use for hover zoom)
   className?: string
+  // Preload the first image (use for above-the-fold placements)
+  priority?: boolean
 }
 
 // Auto-sliding gallery of a project's screenshots. Falls back to the single
@@ -32,6 +34,7 @@ export function ProjectImageSlider({
   interval = 4000,
   startDelay = 0,
   className,
+  priority = false,
 }: ProjectImageSliderProps) {
   const images = getProjectImages(project)
   const hasMany = images.length > 1
@@ -95,7 +98,12 @@ export function ProjectImageSlider({
 
   if (!hasMany) {
     return (
-      <ProjectImage project={project} sizes={sizes} className={className} />
+      <ProjectImage
+        project={project}
+        sizes={sizes}
+        priority={priority}
+        className={className}
+      />
     )
   }
 
@@ -124,6 +132,7 @@ export function ProjectImageSlider({
                 alt={`${project.title} screenshot ${index + 1}`}
                 fill
                 sizes={sizes}
+                priority={priority && index === 0}
                 className='object-cover object-top'
               />
             </div>

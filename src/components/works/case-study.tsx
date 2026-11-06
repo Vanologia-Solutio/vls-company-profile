@@ -10,6 +10,7 @@ import {
 import { TagBadge } from '@/components/ui/tag-badge'
 import { LivePreviewButton } from '@/components/works/project-actions'
 import { ProjectImage } from '@/components/works/project-image'
+import { ProjectImageSlider } from '@/components/works/project-image-slider'
 import {
   EASE_OUT,
   fadeLeft,
@@ -37,7 +38,7 @@ import {
   Star,
 } from 'lucide-react'
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 
 interface CaseStudyProps {
   project: Project
@@ -288,14 +289,15 @@ function BrowserFrame({ project }: { project: Project }) {
   const address = project.link
     ? getHostname(project.link)
     : 'Private system · available on request'
+  const [paused, setPaused] = useState(false)
 
   return (
     <div className='rounded-xl border border-border bg-card shadow-2xl shadow-accent/10 overflow-hidden'>
       <div className='flex items-center gap-3 h-10 px-4 border-b border-border bg-muted/40'>
         <div aria-hidden className='flex gap-1.5'>
-          <span className='size-2.5 rounded-full bg-accent/70' />
-          <span className='size-2.5 rounded-full bg-muted-foreground/40' />
-          <span className='size-2.5 rounded-full bg-muted-foreground/40' />
+          <span className='size-2.5 rounded-full bg-accent' />
+          <span className='size-2.5 rounded-full bg-yellow-500' />
+          <span className='size-2.5 rounded-full bg-green-500' />
         </div>
         <div className='flex-1 flex justify-center min-w-0'>
           {project.link ? (
@@ -317,10 +319,20 @@ function BrowserFrame({ project }: { project: Project }) {
         </div>
         <div aria-hidden className='w-10.5' />
       </div>
-      <div className='relative aspect-3/2 sm:aspect-video'>
-        <ProjectImage
+      {/* `group` reveals the slider arrows on hover; autoplay pauses while
+          the visitor is hovering or tabbing through the controls */}
+      <div
+        className='group relative aspect-3/2 sm:aspect-video'
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocus={() => setPaused(true)}
+        onBlur={() => setPaused(false)}
+      >
+        <ProjectImageSlider
           project={project}
           priority
+          paused={paused}
+          interval={5000}
           sizes='(min-width: 1152px) 1152px, 100vw'
           className='object-top'
         />
