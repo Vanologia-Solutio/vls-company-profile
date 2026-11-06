@@ -6,14 +6,14 @@ interface Stats {
 export const STATS: Stats = {
   heroStats: [
     { label: 'Projects', value: '50+' },
-    { label: 'Clients', value: '15+' },
+    { label: 'Clients', value: '25+' },
     { label: 'Team', value: '10' },
   ],
   aboutStats: [
     { label: 'Projects', value: '50+' },
-    { label: 'Happy Clients', value: '15+' },
+    { label: 'Happy Clients', value: '25+' },
     { label: 'Team Members', value: '10' },
-    { label: 'Years Active', value: '1+' },
+    { label: 'Years Active', value: `${new Date().getFullYear() - 2024}+` },
   ],
 }
 

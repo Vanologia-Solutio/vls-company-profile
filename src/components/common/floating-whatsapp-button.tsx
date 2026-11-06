@@ -3,6 +3,7 @@
 import { LINK_WHATSAPP } from '@/shared/data/contact'
 import { AnimatePresence, motion } from 'framer-motion'
 import { MessageCircle, X } from 'lucide-react'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function FloatingWhatsAppButton() {
@@ -54,7 +55,7 @@ export default function FloatingWhatsAppButton() {
                 className='absolute bottom-20 right-0 bg-background border border-border rounded-md shadow-lg shadow-green-600/10 min-w-max overflow-hidden'
               >
                 {whatsappMessages.map((msg, idx) => (
-                  <a
+                  <Link
                     key={idx}
                     href={msg.url}
                     target='_blank'
@@ -63,7 +64,7 @@ export default function FloatingWhatsAppButton() {
                     onClick={() => setShowMenu(false)}
                   >
                     {msg.text}
-                  </a>
+                  </Link>
                 ))}
               </motion.div>
             )}

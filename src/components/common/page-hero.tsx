@@ -6,7 +6,7 @@ import { cn, DynamicIcon } from '@/lib/utils'
 import { motion, useScroll, useTransform, Variants } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
-import { ReactNode, useRef } from 'react'
+import { Fragment, ReactNode, useRef } from 'react'
 
 interface HeroChip {
   label: string
@@ -152,16 +152,16 @@ export function PageHero({
                   'hover:border-accent/50 hover:text-accent transition-colors',
               )
               const content = (
-                <>
+                <Fragment key={chip.label}>
                   <DynamicIcon
                     name={chip.icon}
                     className='size-4 text-accent'
                   />
                   {chip.label}
-                </>
+                </Fragment>
               )
               return chip.href ? (
-                <a
+                <Link
                   key={chip.label}
                   href={chip.href}
                   target={chip.href.startsWith('http') ? '_blank' : undefined}
@@ -173,7 +173,7 @@ export function PageHero({
                   className={className}
                 >
                   {content}
-                </a>
+                </Link>
               ) : (
                 <span key={chip.label} className={className}>
                   {content}

@@ -1,26 +1,24 @@
 'use client'
 
+import { EASE_OUT, fadeLeft, fadeUp, stagger, VIEWPORT } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { PROJECTS } from '@/shared/data/works'
-import { EASE_OUT, fadeLeft, fadeUp, stagger, VIEWPORT } from '@/lib/motion'
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
-import Image from 'next/image'
+import { ArrowUpRight, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { badgeVariants } from '../ui/badge'
-import {
-  CraftButton,
-  CraftButtonIcon,
-  CraftButtonLabel,
-} from '../ui/craft-button'
 import { TagBadge } from '../ui/tag-badge'
+import { ProjectActions } from '../works/project-actions'
+import { ProjectImage } from '../works/project-image'
 
 export function Works() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [currentWorkIndex, setCurrentWorkIndex] = useState(0)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
-  const featuredWorks = PROJECTS.slice(0, 5)
+  // Only projects with an uploaded thumbnail are featured on the home page
+  const featuredWorks = PROJECTS.filter(project => project.image).slice(0, 5)
+  const currentWork = featuredWorks[currentWorkIndex]
   const intersectionRatios = useRef<number[]>(
     new Array(featuredWorks.length).fill(0),
   )
@@ -103,7 +101,7 @@ export function Works() {
                     transition={{ duration: 0.35, ease: EASE_OUT }}
                     className='inline-block text-sm font-semibold text-accent uppercase tracking-wider'
                   >
-                    {featuredWorks[currentWorkIndex].category}
+                    {currentWork.category}
                   </motion.span>
 
                   <motion.h2
@@ -112,7 +110,7 @@ export function Works() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35, ease: EASE_OUT, delay: 0.05 }}
                   >
-                    {featuredWorks[currentWorkIndex].title}
+                    {currentWork.title}
                   </motion.h2>
 
                   <motion.p
@@ -121,7 +119,7 @@ export function Works() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35, ease: EASE_OUT, delay: 0.1 }}
                   >
-                    {featuredWorks[currentWorkIndex].description}
+                    {currentWork.description}
                   </motion.p>
                 </div>
 
@@ -135,7 +133,7 @@ export function Works() {
                     transition={{ duration: 0.4 }}
                     className='flex flex-wrap gap-2'
                   >
-                    {featuredWorks[currentWorkIndex].tags.map((tag, idx) => (
+                    {currentWork.tags.map((tag, idx) => (
                       <motion.span
                         key={tag}
                         initial={{ opacity: 0, y: 12 }}
@@ -177,14 +175,16 @@ export function Works() {
                 </div>
 
                 {/* Call to Action */}
-                <CraftButton size='xl' asChild>
-                  <Link href='/works'>
-                    <CraftButtonLabel>View Other Works</CraftButtonLabel>
-                    <CraftButtonIcon>
-                      <ArrowUpRight className='transition-transform duration-500 group-hover:rotate-45' />
-                    </CraftButtonIcon>
+                <div className='space-y-4'>
+                  <ProjectActions id={currentWork.id} link={currentWork.link} />
+                  <Link
+                    href='/works'
+                    className='group inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-accent transition-colors'
+                  >
+                    View all works
+                    <ArrowUpRight className='size-4 transition-transform duration-300 group-hover:rotate-45' />
                   </Link>
-                </CraftButton>
+                </div>
               </div>
             </motion.div>
 
@@ -203,20 +203,68 @@ export function Works() {
                   className={cn(
                     'group relative rounded-lg overflow-hidden bg-card border backdrop-blur-sm transition-[box-shadow,filter] duration-300',
                     index === currentWorkIndex
-                      ? 'shadow-2xl shadow-accent/20'
-                      : 'grayscale-80',
+                      ? 'lg:shadow-2xl lg:shadow-accent/20'
+                      : 'lg:grayscale-80',
                   )}
                 >
-                  <div className='overflow-hidden w-full aspect-3/2'>
-                    <Image
-                      src={work.image}
-                      alt='Placeholder'
-                      fill
-                      className='object-cover'
+                  <Link
+                    href={`/works/${work.id}`}
+                    aria-label={`Read the ${work.title} case study`}
+                    className='relative block overflow-hidden w-full aspect-3/2'
+                  >
+                    <ProjectImage
+                      project={work}
+                      sizes='(min-width: 1024px) 60vw, 100vw'
+                      className='transition-transform duration-500 group-hover:scale-105'
                     />
+                    <span className='absolute top-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-background/85 backdrop-blur-sm px-3 py-1.5 text-xs font-medium opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-[opacity,transform] duration-300'>
+                      Read case study
+                      <ArrowUpRight className='size-3.5' />
+                    </span>
+                  </Link>
+
+                  {/* Project info (mobile / tablet, where the sticky panel is hidden) */}
+                  <div className='lg:hidden p-4 sm:p-5 space-y-3'>
+                    <div className='space-y-1'>
+                      <p className='text-xs font-semibold uppercase tracking-wider text-accent'>
+                        {work.category}
+                      </p>
+                      <h4>{work.title}</h4>
+                      <p className='line-clamp-2'>{work.description}</p>
+                    </div>
+                    <div className='flex flex-wrap items-center gap-2'>
+                      <Link
+                        href={`/works/${work.id}`}
+                        className='inline-flex items-center gap-1.5 rounded-full bg-accent px-3.5 py-1.5 text-xs font-medium text-accent-foreground'
+                      >
+                        Read Case Study
+                        <ArrowUpRight className='size-3.5' />
+                      </Link>
+                      {work.link && (
+                        <Link
+                          href={work.link}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          className='inline-flex items-center gap-1.5 rounded-full border border-accent/30 px-3.5 py-1.5 text-xs font-medium'
+                        >
+                          <ExternalLink className='size-3.5' />
+                          Live Preview
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
+
+              <div className='lg:hidden text-center pt-2'>
+                <Link
+                  href='/works'
+                  className='inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-accent transition-colors'
+                >
+                  View all works
+                  <ArrowUpRight className='size-4' />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

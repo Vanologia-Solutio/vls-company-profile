@@ -8,45 +8,8 @@ import {
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
 import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
+import { TESTIMONIALS } from '@/shared/data/works'
 import { TagBadge } from '../ui/tag-badge'
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'SC',
-    role: 'Owner, Central Medica Lampung',
-    text: 'Vanologia built a reliable ERP system that streamlined our inventory, reporting, and daily operations. It significantly reduced manual work and improved our overall efficiency.',
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: 'EC',
-    role: 'Owner, Hemat Indonesia',
-    text: 'The package tracking system with barcode and webcam integration transformed how we handle logistics. Our inspection process is now faster, more accurate, and fully trackable.',
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: 'BC',
-    role: 'Owner, CM Gestun',
-    text: 'Our company profile website not only improved our brand presence but also helped us reach more customers online. The team delivered a clean, professional result on time.',
-    rating: 5,
-  },
-  {
-    id: 4,
-    name: 'EK',
-    role: 'Owner, Neo Meridian Therapy',
-    text: 'The POS and reservation system simplified our sales and booking process. The seamless integration with our printer and reporting tools made daily operations much smoother.',
-    rating: 5,
-  },
-  {
-    id: 5,
-    name: 'LP',
-    role: 'Owner, Klinik Kecantikan Aristée',
-    text: 'Thank you, Vanologia Solutio, for your support of Aristée Beauty Clinic. We truly appreciate your prompt responses and your clear understanding of our needs. The landing page, WhatsApp Business setup, catalog upload, and all other deliverables fully met our expectations.',
-    rating: 5,
-  },
-]
 
 export function Testimonies() {
   return (
@@ -82,7 +45,7 @@ export function Testimonies() {
             }}
           >
             <CarouselContent>
-              {testimonials.map(testimonial => (
+              {TESTIMONIALS.map(testimonial => (
                 <CarouselItem
                   key={testimonial.id}
                   className='pl-4 basis-full sm:basis-1/2 lg:basis-1/3'

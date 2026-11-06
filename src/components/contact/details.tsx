@@ -1,6 +1,6 @@
 import contactImage from '@/assets/images/bg/wa.webp'
-import { CONTACT_INFO, LINK_WHATSAPP } from '@/shared/data/contact'
 import { fadeUp, stagger, VIEWPORT } from '@/lib/motion'
+import { CONTACT_INFO, LINK_WHATSAPP } from '@/shared/data/contact'
 import { motion } from 'framer-motion'
 import { Send } from 'lucide-react'
 import Image from 'next/image'
@@ -39,22 +39,22 @@ export function Details() {
                     {info.title}
                   </h5>
                   {info.title === 'Email' && (
-                    <a
+                    <Link
                       href={`mailto:${info.value}`}
                       target='_blank'
                       rel='noopener noreferrer'
                     >
                       {info.value}
-                    </a>
+                    </Link>
                   )}
                   {info.title === 'Phone' && (
-                    <a
+                    <Link
                       href={`https://wa.me/${info.value.replace('+62 ', '62').replaceAll('-', '')}`}
                       target='_blank'
                       rel='noopener noreferrer'
                     >
                       {info.value}
-                    </a>
+                    </Link>
                   )}
                   {info.title === 'Location' && (
                     <p className='text-primary'> {info.value}</p>
