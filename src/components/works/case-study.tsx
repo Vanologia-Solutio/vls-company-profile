@@ -322,7 +322,7 @@ function BrowserFrame({ project }: { project: Project }) {
       {/* `group` reveals the slider arrows on hover; autoplay pauses while
           the visitor is hovering or tabbing through the controls */}
       <div
-        className='group relative aspect-3/2 sm:aspect-video'
+        className='group relative aspect-video'
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onFocus={() => setPaused(true)}

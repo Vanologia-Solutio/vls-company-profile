@@ -127,7 +127,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       viewport={VIEWPORT}
       className='group relative h-full flex flex-col rounded-lg border border-border bg-card overflow-hidden hover:border-accent/60 hover:shadow-xl hover:shadow-accent/10 transition-[border-color,box-shadow] duration-300'
     >
-      <div className='relative aspect-3/2 overflow-hidden'>
+      <div className='relative aspect-video overflow-hidden'>
         <ProjectImageSlider
           project={project}
           sizes='(min-width: 640px) 50vw, 100vw'

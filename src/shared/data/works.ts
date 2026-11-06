@@ -290,6 +290,12 @@ export const PROJECTS: Project[] = [
     platform: 'Online Storefront',
     description:
       "The direct online storefront for Mega Grosir Hemat: complete, affordable wholesale sembako such as cooking oil, sugar, flour and rice for Indonesian families, alongside the brand's marketplace shops. Currently in its pre-launch phase.",
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/mghsf1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/mghsf2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/mghsf3.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/mghsf4.webp',
+    ],
     tags: [
       'Storefront',
       'Product Catalogue',
@@ -297,7 +303,7 @@ export const PROJECTS: Project[] = [
       'SEO Optimization',
       'Branding',
     ],
-    link: 'https://megagrosir.com',
+    link: 'https://www.megagrosir.com/',
     background: {
       overview:
         'Mega Grosir Hemat sold almost entirely through third-party marketplaces, paying platform fees on every order and competing side by side with other sellers. The business wanted its own channel where families and resellers could find the full sembako range at wholesale prices and order directly.',
@@ -380,6 +386,11 @@ export const PROJECTS: Project[] = [
     platform: 'Web Dashboard + Local Printer Agent',
     description:
       'A Voucher Management & Redemption System for Setigi Heni and Cinta Food. Issue voucher batches with unique codes, print barcode stickers, and check and redeem vouchers at any outlet, all from one central database.',
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/setigiheni1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/setigiheni2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/setigiheni3.webp',
+    ],
     tags: [
       'Voucher Management',
       'Barcode Sticker Printing',
@@ -482,12 +493,11 @@ export const PROJECTS: Project[] = [
     platform: 'Landing Page & Treatment Catalogue',
     description:
       'A doctor-supervised beauty clinic in Pringsewu, Lampung. A landing page with a full treatment catalogue, local SEO and WhatsApp booking, delivered together with the WhatsApp Business setup and catalogue upload.',
-    // TODO: sample images to preview the slider, replace with Aristée screenshots
-    image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/medilink.webp',
     images: [
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/cmgestun.webp',
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroutepeps.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/aristee1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/aristee2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/aristee3.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/aristee4.webp',
     ],
     tags: [
       'Landing Page',
@@ -496,6 +506,7 @@ export const PROJECTS: Project[] = [
       'WhatsApp Business Setup',
       'QR Code Menu',
     ],
+    link: 'https://www.aristeeclinic.com/',
     background: {
       overview:
         'Aristée was preparing its soft opening in Pringsewu and needed to be found and trusted from day one. Prospective patients had no place to learn about the clinic, its doctor, or its treatments, and bookings depended on word of mouth.',
@@ -578,8 +589,11 @@ export const PROJECTS: Project[] = [
     platform: 'Web Application (SaaS)',
     description:
       'MediLink is a system that allows the business to manage their medical equipment and supplies with a modern design, responsive layout, admin panel, and inventory tracking system.',
-    image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/medilink.webp',
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/medilink1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/medilink2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/medilink3.webp',
+    ],
     tags: [
       'SaaS',
       'Inventory Management',
@@ -670,10 +684,13 @@ export const PROJECTS: Project[] = [
     platform: 'Company Profile Website',
     description:
       'CM Gestun is a trusted credit card cash-advance (gesek tunai) and credit card payoff service in Palembang. A company profile website that builds trust, explains its services, and turns visitors into WhatsApp inquiries.',
-    image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/cmgestun.webp',
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/cmgestun1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/cmgestun2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/cmgestun3.webp',
+    ],
     tags: ['Company Profile', 'Branding', 'SEO Optimization'],
-    link: 'https://cmgestun.com/',
+    link: 'https://www.cmgestun.com/',
     background: {
       overview:
         'CM Gestun helps customers in Palembang withdraw cash from their credit card limit and pay off credit card balances. In a market where trust is everything, the business relied on word of mouth and social media, with no official website to prove its credibility or be found on search engines.',
@@ -756,8 +773,12 @@ export const PROJECTS: Project[] = [
     platform: 'Custom E-commerce Website',
     description:
       'Pure Route Peptides is a business that sells peptides in the USA. Custom built website with a modern design, responsive layout, admin panel, and mailing system.',
-    image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroutepeps.webp',
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroute1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroute2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroute3.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/pureroute4.webp',
+    ],
     tags: [
       'E-commerce',
       'Mailing System',
@@ -847,8 +868,12 @@ export const PROJECTS: Project[] = [
     platform: 'Web-based POS & Reservation System',
     description:
       'A system that allows the business to manage their sales and inventory with a seamless integration to thermal printer to print receipts.',
-    image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/neomeridian.webp',
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/neomeridian1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/neomeridian2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/neomeridian3.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/neomeridian4.webp',
+    ],
     tags: [
       'Point of Sale',
       'Reservation System',
@@ -938,8 +963,12 @@ export const PROJECTS: Project[] = [
     platform: 'Web-based Tracking System',
     description:
       'Hemat Indonesia is a online store focusing on daily goods. Package tracking system including webcam and barcode scanner integration for package inspection.',
-    image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/hematindonesia.webp',
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/hematindonesia1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/hematindonesia2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/hematindonesia3.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/hematindonesia4.webp',
+    ],
     tags: [
       'Package Tracker',
       'Webcam & Barcode Scanner',
@@ -1028,8 +1057,14 @@ export const PROJECTS: Project[] = [
     platform: 'E-commerce Website',
     description:
       'Sinar Ogan Industri is a business that sells disposable medical supplies. Website with Midtrans integration for payment gateway, and admin panel for managing the business.',
-    image:
-      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/sinaroganindustri.webp',
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/soi1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/soi2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/soi3.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/soi4.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/soi5.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/soi6.webp',
+    ],
     tags: [
       'E-commerce',
       'Payment Gateway',

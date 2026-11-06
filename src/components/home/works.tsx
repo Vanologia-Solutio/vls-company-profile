@@ -2,7 +2,7 @@
 
 import { EASE_OUT, fadeLeft, fadeUp, stagger, VIEWPORT } from '@/lib/motion'
 import { cn } from '@/lib/utils'
-import { PROJECTS } from '@/shared/data/works'
+import { getProjectImages, PROJECTS } from '@/shared/data/works'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
@@ -16,8 +16,11 @@ export function Works() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [currentWorkIndex, setCurrentWorkIndex] = useState(0)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
-  // Only projects with an uploaded thumbnail are featured on the home page
-  const featuredWorks = PROJECTS.filter(project => project.image).slice(0, 5)
+  // Only projects with at least one uploaded screenshot (`image` or `images`)
+  // are featured on the home page
+  const featuredWorks = PROJECTS.filter(
+    project => getProjectImages(project).length > 0,
+  ).slice(0, 5)
   const currentWork = featuredWorks[currentWorkIndex]
   const intersectionRatios = useRef<number[]>(
     new Array(featuredWorks.length).fill(0),
@@ -207,7 +210,7 @@ export function Works() {
                       : 'lg:grayscale-80',
                   )}
                 >
-                  <div className='relative overflow-hidden w-full aspect-3/2'>
+                  <div className='relative overflow-hidden w-full aspect-video'>
                     <ProjectImageSlider
                       project={work}
                       sizes='(min-width: 1024px) 60vw, 100vw'
