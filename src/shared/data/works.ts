@@ -92,6 +92,12 @@ export const PROJECTS: Project[] = [
       'Purchasing',
       'Role-based Access',
     ],
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/mgherp1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/mgherp2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/mgherp3.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/mgherp4.webp',
+    ],
     background: {
       overview:
         'Mega Grosir Hemat runs several marketplace shops alongside direct B2B sales. Every day the team downloaded order, income and wallet reports from each shop, then reconciled them by hand against purchases, stock and the books. As volume grew, the numbers drifted apart and closing a month took far too long.',
@@ -180,6 +186,10 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'megagrosirhemat-wms',
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/mghwms1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/mghwms2.webp',
+    ],
     title: 'Mega Grosir Hemat WMS',
     category: 'Warehouse Management System',
     type: 'Business System',
