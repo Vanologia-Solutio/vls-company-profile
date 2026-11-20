@@ -9,10 +9,11 @@ import {
   CraftButtonLabel,
 } from '../ui/craft-button'
 import { TagBadge } from '../ui/tag-badge'
+import { TrustedBy } from './trusted-by'
 
 export function Hero() {
   return (
-    <section className='min-h-screen flex items-center justify-center px-4 relative overflow-hidden'>
+    <section className='min-h-screen flex items-center justify-center px-4 pt-28 pb-32 relative overflow-hidden'>
       <motion.div
         initial={{ scale: 1.15 }}
         animate={{ scale: 1 }}
@@ -60,7 +61,7 @@ export function Hero() {
         variants={stagger(0.15, 0.2)}
         initial='hidden'
         animate='visible'
-        className='relative z-10 max-w-6xl mx-auto text-center space-y-6'
+        className='relative z-10 w-full min-w-0 max-w-6xl mx-auto text-center space-y-6'
       >
         <TagBadge label='Digital Innovation Starts Here' icon='Sparkles' />
         <motion.div
@@ -79,7 +80,7 @@ export function Hero() {
 
         <motion.p
           variants={fadeUp}
-          className='text-base sm:text-lg max-w-2xl md:max-w-3xl'
+          className='text-base sm:text-lg max-w-2xl md:max-w-3xl mx-auto'
         >
           Vanologia Solutio delivers cutting-edge digital solutions that empower
           your business to thrive in the modern landscape.
@@ -106,6 +107,10 @@ export function Hero() {
               <CraftButtonLabel>Explore Our Works</CraftButtonLabel>
             </Link>
           </CraftButton>
+        </motion.div>
+
+        <motion.div variants={fadeUp} className='pt-10 sm:pt-14'>
+          <TrustedBy />
         </motion.div>
       </motion.div>
 
