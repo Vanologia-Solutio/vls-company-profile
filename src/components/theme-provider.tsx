@@ -30,8 +30,17 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
-    // Dark by default; light only when the visitor picked it
-    const shouldBeDark = localStorage.getItem('theme') !== 'light'
+    // Follow the OS setting unless the visitor picked a theme themselves
+    const media = window.matchMedia('(prefers-color-scheme: dark)')
+    const getSaved = () => {
+      try {
+        return localStorage.getItem('theme')
+      } catch {
+        return null
+      }
+    }
+    const saved = getSaved()
+    const shouldBeDark = saved ? saved === 'dark' : media.matches
 
     updateTheme(shouldBeDark)
 
@@ -40,13 +49,28 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       setMounted(true)
     }, 0)
 
-    return () => clearTimeout(timeoutId)
+    // Track OS changes live while there's no saved choice
+    const onSystemChange = (event: MediaQueryListEvent) => {
+      if (getSaved()) return
+      setIsDark(event.matches)
+      updateTheme(event.matches)
+    }
+    media.addEventListener('change', onSystemChange)
+
+    return () => {
+      clearTimeout(timeoutId)
+      media.removeEventListener('change', onSystemChange)
+    }
   }, [])
 
   const toggleTheme = () => {
     const newIsDark = !isDark
     setIsDark(newIsDark)
-    localStorage.setItem('theme', newIsDark ? 'dark' : 'light')
+    try {
+      localStorage.setItem('theme', newIsDark ? 'dark' : 'light')
+    } catch {
+      // Storage unavailable (private mode): the choice lasts for this visit
+    }
     updateTheme(newIsDark)
   }
 

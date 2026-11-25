@@ -25,7 +25,7 @@ import {
   type Project,
   type Testimonial,
 } from '@/shared/data/works'
-import { motion, type Variants } from 'framer-motion'
+import { motion, useScroll, useTransform, type Variants } from 'framer-motion'
 import {
   ArrowLeft,
   ArrowRight,
@@ -38,7 +38,7 @@ import {
   Star,
 } from 'lucide-react'
 import Link from 'next/link'
-import { ReactNode, useState } from 'react'
+import { ReactNode, useRef, useState } from 'react'
 
 interface CaseStudyProps {
   project: Project
@@ -173,8 +173,15 @@ function CaseStudyHero({ project }: { project: Project }) {
     { label: 'Category', value: project.type },
   ]
 
+  const ref = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  })
+  const watermarkY = useTransform(scrollYProgress, [0, 1], [0, 160])
+
   return (
-    <section className='relative overflow-hidden pt-32 sm:pt-40'>
+    <section ref={ref} className='relative overflow-hidden pt-32 sm:pt-40'>
       {/* Blueprint grid */}
       <div
         aria-hidden
@@ -187,10 +194,29 @@ function CaseStudyHero({ project }: { project: Project }) {
           WebkitMaskImage: GRID_MASK,
         }}
       />
-      <div
+
+      {/* Glow orbs */}
+      <motion.div
         aria-hidden
+        animate={{ x: [0, 40, 0], y: [0, 20, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         className='absolute -top-24 -left-24 size-96 rounded-full bg-accent/15 blur-3xl'
       />
+      <motion.div
+        aria-hidden
+        animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
+        className='absolute top-1/3 right-0 size-112 rounded-full bg-accent/10 blur-3xl'
+      />
+
+      {/* Watermark */}
+      <motion.span
+        aria-hidden
+        style={{ y: watermarkY }}
+        className='pointer-events-none select-none absolute right-0 top-24 sm:top-28 font-bebasneue leading-none text-[28vw] lg:text-[18rem] text-transparent opacity-20 dark:opacity-15 [-webkit-text-stroke:2px_var(--color-accent)]'
+      >
+        CASE
+      </motion.span>
 
       <motion.div
         variants={stagger(0.1, 0.1)}
@@ -228,7 +254,10 @@ function CaseStudyHero({ project }: { project: Project }) {
           className='mt-4 h-1 w-20 rounded-full bg-accent origin-left'
         />
 
-        <motion.p variants={fadeUp} className='mt-6 max-w-2xl md:max-w-3xl'>
+        <motion.p
+          variants={fadeUp}
+          className='mt-6 max-w-2xl md:max-w-3xl sm:text-lg'
+        >
           {project.description}
         </motion.p>
 
@@ -262,22 +291,33 @@ function CaseStudyHero({ project }: { project: Project }) {
         </motion.div>
 
         <motion.dl
-          variants={fadeUp}
-          className='mt-10 grid grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-lg border border-border bg-border'
+          variants={stagger(0.08)}
+          className='mt-10 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6'
         >
-          {meta.map(item => (
-            <div key={item.label} className='bg-card/90 backdrop-blur-sm p-4'>
-              <dt className='text-xs uppercase tracking-wider text-muted-foreground'>
-                {item.label}
+          {meta.map((item, idx) => (
+            <motion.div key={item.label} variants={fadeUp} className='min-w-0'>
+              <dt className='flex items-center gap-2'>
+                <span className='font-bebasneue text-lg text-accent leading-none'>
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
+                <span className='h-px w-6 bg-accent/40' />
+                <span className='text-xs font-semibold uppercase tracking-wider text-muted-foreground'>
+                  {item.label}
+                </span>
               </dt>
-              <dd className='mt-1 text-sm sm:text-base font-medium'>
+              <dd className='mt-2 text-sm sm:text-base font-medium text-foreground'>
                 {item.value}
               </dd>
-            </div>
+            </motion.div>
           ))}
         </motion.dl>
 
-        <motion.div variants={scaleIn} className='mt-10 sm:mt-12'>
+        <motion.div variants={scaleIn} className='relative mt-12 sm:mt-16'>
+          {/* Soft glow behind the mockup instead of a hard frame */}
+          <div
+            aria-hidden
+            className='absolute -inset-x-8 -inset-y-6 sm:-inset-x-16 sm:-inset-y-10 rounded-[3rem] bg-accent/15 blur-3xl'
+          />
           <BrowserFrame project={project} />
         </motion.div>
       </motion.div>
@@ -292,8 +332,8 @@ function BrowserFrame({ project }: { project: Project }) {
   const [paused, setPaused] = useState(false)
 
   return (
-    <div className='rounded-xl border border-border bg-card shadow-2xl shadow-accent/10 overflow-hidden'>
-      <div className='flex items-center gap-3 h-10 px-4 border-b border-border bg-muted/40'>
+    <div className='relative rounded-xl bg-card shadow-2xl shadow-accent/20 overflow-hidden'>
+      <div className='flex items-center gap-3 h-10 px-4 bg-muted/60'>
         <div aria-hidden className='flex gap-1.5'>
           <span className='size-2.5 rounded-full bg-accent' />
           <span className='size-2.5 rounded-full bg-yellow-500' />

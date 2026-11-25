@@ -39,10 +39,11 @@ export default function RootLayout({
   return (
     <html lang='en' className='dark' suppressHydrationWarning>
       <head>
-        {/* Apply a saved light theme before paint to avoid a dark flash */}
+        {/* Resolve the theme before paint (saved choice, else the OS
+            setting) to avoid a flash of the wrong theme */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark')}catch(e){}`,
+            __html: `try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d)}catch(e){}`,
           }}
         />
       </head>

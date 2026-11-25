@@ -494,6 +494,114 @@ export const PROJECTS: Project[] = [
     },
   },
   {
+    id: 'laurentsdelight',
+    title: "Laurent's Delight",
+    category: 'Landing Page',
+    type: 'Website',
+    industry: 'Food & Beverage (Home Bakery)',
+    client: "Laurent's Delight",
+    platform: 'Bilingual Landing Page with WhatsApp Ordering',
+    description:
+      "Laurent's Delight is a small-batch home bakery in Indonesia selling handmade cookies and brownies online. An animated, bilingual landing page with a product catalogue and a shopping bag that sends the finished order straight to WhatsApp.",
+    images: [
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/laurentsdelight1.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/laurentsdelight2.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/laurentsdelight3.webp',
+      'https://rexrvbbxzcvutieztyao.supabase.co/storage/v1/object/public/work-thumbnails/laurentsdelight4.webp',
+    ],
+    tags: [
+      'Landing Page',
+      'Product Catalogue',
+      'Cart & WhatsApp Ordering',
+      'Bilingual (EN / ID)',
+      'Motion Design',
+      'Branding',
+    ],
+    background: {
+      overview:
+        "Laurent's Delight bakes cookies and brownies from a home kitchen, with no physical store. Orders came in through chat, where customers had to ask about flavours, sizes and prices one message at a time before the baker could write the order down by hand.",
+      challenges: [
+        'No online home to showcase the flavours, packages and the story behind the brand.',
+        'Every order started with the same questions about flavours, sizes and prices over chat.',
+        'Orders arrived as free-form messages that had to be totalled and confirmed manually.',
+        'Customers speak both English and Bahasa Indonesia.',
+      ],
+    },
+    objectives: [
+      'Give the bakery a warm, memorable brand presence online.',
+      'Present every flavour and package with photos, prices and promos.',
+      'Let customers build their order themselves before reaching out.',
+      'Serve both English and Bahasa Indonesia speakers.',
+    ],
+    solution: {
+      approach:
+        'We built a single animated landing page on Next.js 16 and Tailwind CSS, with Framer Motion animations that respect reduced-motion settings. Customers browse soft cookies, brownies and gift boxes, pick sizes or fill a mix-and-match box, and add everything to a shopping bag. At checkout the bag becomes a neatly formatted WhatsApp message, so the baker receives a complete, totalled order. Both languages are prerendered as static pages, and the site includes a Privacy Policy and Terms of Service drafted for Indonesian data protection law.',
+      features: [
+        {
+          icon: 'Cookie',
+          title: 'Flavour & Package Catalogue',
+          description:
+            'Cookies, brownies and gift boxes with photos, size variants, promo prices and highlight tags.',
+        },
+        {
+          icon: 'ShoppingBasket',
+          title: 'Shopping Bag & Mix-and-Match Boxes',
+          description:
+            'Customers add items, set quantities and fill pick-your-own boxes, with order notes.',
+        },
+        {
+          icon: 'MessageCircle',
+          title: 'WhatsApp Checkout',
+          description:
+            'The bag is turned into a ready-to-send WhatsApp order message with items and totals.',
+        },
+        {
+          icon: 'Languages',
+          title: 'English & Bahasa Indonesia',
+          description:
+            'Built-in localisation with automatic language redirect and a language switcher.',
+        },
+        {
+          icon: 'Sparkles',
+          title: 'Animated Brand Experience',
+          description:
+            'A handcrafted look with scroll-triggered motion that respects reduced-motion settings.',
+        },
+        {
+          icon: 'ShieldCheck',
+          title: 'Privacy Policy & Terms',
+          description:
+            "Legal pages in both languages, drafted around Indonesia's personal data protection law (UU PDP).",
+        },
+      ],
+    },
+    results: {
+      metrics: [
+        {
+          value: '2',
+          label: 'Languages',
+          description: 'English and Bahasa Indonesia, prerendered.',
+        },
+        {
+          value: '1-tap',
+          label: 'WhatsApp Order',
+          description: 'A complete, totalled order in one message.',
+        },
+        {
+          value: '24/7',
+          label: 'Online Catalogue',
+          description: 'Customers can browse and order any time.',
+        },
+      ],
+      outcomes: [
+        'A memorable online home for the brand, with no physical store needed.',
+        'Fewer back-and-forth questions about flavours, sizes and prices.',
+        'Clear, structured orders the baker can confirm right away.',
+        'A site that welcomes both English and Indonesian speakers.',
+      ],
+    },
+  },
+  {
     id: 'aristee',
     title: 'Klinik Kecantikan Aristée',
     category: 'Landing Page',
